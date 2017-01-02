@@ -10,10 +10,10 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="com.zsorg.neteasecloudmusic.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="@+id/content_main"
         app:layout_constraintLeft_toLeftOf="@+id/content_main"
         app:layout_constraintRight_toRightOf="@+id/content_main"

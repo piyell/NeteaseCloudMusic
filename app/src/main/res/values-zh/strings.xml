@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">网易云音乐</string>
+
+    <string name="navigation_drawer_open">打开侧边栏</string>
+    <string name="navigation_drawer_close">关闭侧边栏</string>
+
+    <string name="action_settings">设置</string>
+</resources>

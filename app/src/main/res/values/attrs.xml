@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<attr name = "tabBackgroundPressed" format = "reference" />-->
+    <attr name = "tabBackground" format = "reference" />
+    <!--<declare-styleable name = "bottom_layout">-->
+        <!--<attr name = "tabBackgroundPressed" format = "reference" />-->
+        <!--<attr name = "tabBackground" format = "reference" />-->
+    <!--</declare-styleable>-->
+</resources>

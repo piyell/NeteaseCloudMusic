@@ -9,6 +9,15 @@
         <item name="tabBackground">@android:color/white</item>
     </style>
 
+    <style name="AppTheme.Night" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/background_dark</item>
+        <item name="colorPrimaryDark">@android:color/background_dark</item>
+        <item name="colorAccent">@android:color/background_dark</item>
+        <item name="tabBackground">@android:color/background_dark</item>
+        <!--<item name="tabBackgroundPressed">@android:color/darker_gray</item>-->
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -20,6 +29,14 @@
         <item name="android:layout_height">@android:dimen/app_icon_size</item>
         <item name="android:button">@null</item>
         <item name="android:layout_weight">1</item>
+    </style>
+
+    <!-- 单行textView的样式  -->
+    <style name="SingleLineTextStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">

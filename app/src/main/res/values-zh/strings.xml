@@ -4,4 +4,17 @@
     <string name="navigation_drawer_open">打开侧边栏</string>
     <string name="navigation_drawer_close">关闭侧边栏</string>
 
+
+    <string name="singer">歌手</string>
+    <string name="album">专辑</string>
+    <string name="folder">文件夹</string>
+    <string name="single">单曲</string>
+
+    <string-array name="music">
+        <item>@string/single</item>
+        <item>@string/singer</item>
+        <item>@string/album</item>
+        <item>@string/folder</item>
+    </string-array>
+
 </resources>

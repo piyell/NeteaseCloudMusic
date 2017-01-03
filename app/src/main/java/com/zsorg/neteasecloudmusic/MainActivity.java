@@ -16,7 +16,6 @@ import android.widget.RadioGroup;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, SearchView.OnCloseListener, ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     RadioGroup mRadioGroup;
     @BindView(R.id.viewpager)
     ViewPager mViewpager;
-    private MusicAdapter adapter;
+    private MainAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         mSearchView.setOnSearchClickListener(this);
         mSearchView.setOnCloseListener(this);
 
-        adapter = new MusicAdapter(getSupportFragmentManager());
+        adapter = new MainAdapter(getSupportFragmentManager());
         mViewpager.setAdapter(adapter);
         mViewpager.addOnPageChangeListener(this);
 

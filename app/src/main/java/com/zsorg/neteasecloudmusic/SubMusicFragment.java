@@ -3,35 +3,25 @@ package com.zsorg.neteasecloudmusic;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MusicFragment.OnFragmentInteractionListener} interface
+ * {@link SubMusicFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MusicFragment#newInstance} factory method to
+ * Use the {@link SubMusicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MusicFragment extends Fragment {
+public class SubMusicFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    @BindView(R.id.music_tab)
-    TabLayout mTabLayout;
-    @BindView(R.id.music_viewpager)
-    ViewPager mViewpager;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -39,7 +29,7 @@ public class MusicFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MusicFragment() {
+    public SubMusicFragment() {
         // Required empty public constructor
     }
 
@@ -49,11 +39,11 @@ public class MusicFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MusicFragment.
+     * @return A new instance of fragment SubMusicFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MusicFragment newInstance(String param1, String param2) {
-        MusicFragment fragment = new MusicFragment();
+    public static SubMusicFragment newInstance(String param1, String param2) {
+        SubMusicFragment fragment = new SubMusicFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,13 +64,7 @@ public class MusicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_music, container, false);
-        ButterKnife.bind(this, view);
-
-        mViewpager.setAdapter(new MusicAdapter(view,getChildFragmentManager()));
-        mTabLayout.setupWithViewPager(mViewpager);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_sub_music, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

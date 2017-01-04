@@ -45,16 +45,18 @@
 
         <TextView
             android:id="@+id/tv_song_name"
+            style="@style/SingleLineTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/iv_album"
             android:layout_margin="@dimen/bottom_tv_margin"
             android:layout_toRightOf="@id/iv_album"
             android:text="三个和尚"
-            android:textColor="@android:color/black" />
+            android:textColor="?android:attr/textColorHighlight" />
 
         <TextView
             android:id="@+id/tv_album_name"
+            style="@style/SingleLineTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/iv_album"
@@ -62,6 +64,24 @@
             android:layout_toRightOf="@id/iv_album"
             android:text="儿童歌曲"
             android:textSize="@dimen/bottom_tv_small_size" />
+
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/bottom_iv_next"
+            style="@style/PlayBarButtonStyle"/>
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_toLeftOf="@id/iv_next"
+            android:src="@drawable/playbar_btn_play"
+            style="@style/PlayBarButtonStyle" />
+
+        <ImageView
+            android:id="@+id/iv_list"
+            android:layout_toLeftOf="@id/iv_play"
+            android:src="@drawable/playbar_btn_playlist"
+            style="@style/PlayBarButtonStyle" />
 
     </RelativeLayout>
 

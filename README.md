@@ -1,2 +1,2 @@
-# NeteaseCloudMusic
-An music player imitates Neteasy Cloud Music.
+# Netease Cloud Music
+An music player imitates Netease Cloud Music.

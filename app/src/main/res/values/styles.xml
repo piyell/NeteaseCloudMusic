@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorHighlight">@android:color/black</item>
         <item name="tabBackground">@android:color/white</item>
     </style>
 
@@ -27,6 +28,7 @@
     <style name="ActionRadioStyle">
         <item name="android:layout_width">@android:dimen/app_icon_size</item>
         <item name="android:layout_height">@android:dimen/app_icon_size</item>
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
         <item name="android:button">@null</item>
         <item name="android:layout_weight">1</item>
     </style>
@@ -37,6 +39,14 @@
         <item name="android:lines">1</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
+    </style>
+
+    <!-- play bar图片按钮的样式  -->
+    <style name="PlayBarButtonStyle">
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">@dimen/bottom_iv_size</item>
+        <item name="android:layout_height">@dimen/bottom_iv_size</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:gravity="left" android:layout_gravity="left">
         <item
             android:id="@+id/nav_camera"
+            android:gravity="left"
             android:icon="@drawable/ic_menu_camera"
             android:title="Import" />
         <item

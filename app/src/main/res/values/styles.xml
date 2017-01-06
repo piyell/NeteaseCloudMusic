@@ -29,7 +29,7 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="android:windowBackground">@drawable/splash2</item>
+        <item name="android:windowBackground">@mipmap/splash2</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 

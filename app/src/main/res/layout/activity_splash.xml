@@ -4,7 +4,7 @@
     android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash2"
+    android:background="@mipmap/splash2"
     tools:context="com.zsorg.neteasecloudmusic.SplashActivity">
 
 </RelativeLayout>

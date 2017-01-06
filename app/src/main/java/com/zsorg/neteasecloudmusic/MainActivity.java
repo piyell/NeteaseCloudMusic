@@ -3,6 +3,9 @@ package com.zsorg.neteasecloudmusic;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -32,11 +35,16 @@ public class MainActivity extends AppCompatActivity
     RadioGroup mRadioGroup;
     @BindView(R.id.viewpager)
     ViewPager mViewpager;
+    @BindView(R.id.bottomLayout)
+    View mBottomLayout;
+    @BindView(R.id.rv_search)
+    RecyclerView mRvSearch;
     private MainAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
@@ -47,6 +55,10 @@ public class MainActivity extends AppCompatActivity
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        mRvSearch.setLayoutManager(new LinearLayoutManager(this));
+        mRvSearch.addItemDecoration(LineItemDecorator.getInstance());
+        mRvSearch.setAdapter(new SearchAdapter(getLayoutInflater()));
 
         mNavigationView.setNavigationItemSelectedListener(this);
         mSearchView.setOnSearchClickListener(this);
@@ -93,14 +105,25 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * SearchView单击事件
+     *
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         mRadioGroup.setVisibility(View.GONE);
+        mBottomLayout.setVisibility(View.GONE);
+        mViewpager.setVisibility(View.GONE);
+        mRvSearch.setVisibility(View.VISIBLE);
     }
 
     @Override
     public boolean onClose() {
         mRadioGroup.setVisibility(View.VISIBLE);
+        mBottomLayout.setVisibility(View.VISIBLE);
+        mViewpager.setVisibility(View.VISIBLE);
+        mRvSearch.setVisibility(View.GONE);
         return false;
     }
 
@@ -111,7 +134,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onPageSelected(int position) {
-        mRadioGroup.check(position==0?R.id.action_music:R.id.action_list);
+        mRadioGroup.check(position == 0 ? R.id.action_music : R.id.action_list);
     }
 
     @Override
@@ -121,6 +144,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-        mViewpager.setCurrentItem(i==R.id.action_music?0:1);
+        mViewpager.setCurrentItem(i == R.id.action_music ? 0 : 1);
     }
 }

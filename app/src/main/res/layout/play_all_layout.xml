@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="@dimen/song_list_item_padding"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_play"
+        android:layout_width="@dimen/item_iv_size"
+        android:layout_height="@dimen/item_iv_size"
+        android:layout_alignParentStart="true"
+        android:tint="@android:color/black"
+        android:paddingRight="@dimen/song_list_item_padding"
+        android:paddingEnd="@dimen/song_list_item_padding"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/play" />
+
+    <TextView
+        android:id="@+id/tv_play_all"
+        style="@style/SingleLineTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_play"
+        android:layout_toEndOf="@id/iv_play"
+        android:text="@string/play_all"
+        android:layout_centerVertical="true"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/bottom_tv_title_size"
+        android:layout_alignBaseline="@+id/tv_songs_in_total"
+        android:layout_alignBottom="@+id/tv_songs_in_total" />
+
+    <TextView
+        android:id="@+id/tv_songs_in_total"
+        style="@style/SingleLineTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/tv_play_all"
+        android:layout_toEndOf="@id/tv_play_all"
+        android:layout_margin="@dimen/bottom_tv_margin"
+        android:text="@string/songs_in_total"
+         />
+
+    <ImageView
+        android:id="@+id/iv_more"
+        android:layout_width="@dimen/item_iv_size"
+        android:layout_height="@dimen/item_iv_size"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/menu_more" />
+
+</RelativeLayout>

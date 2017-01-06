@@ -20,6 +20,15 @@
         app:layout_constraintTop_toTopOf="@+id/content_main"
         app:layout_constraintVertical_bias="0.0" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_search"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/content_main"
+        app:layout_constraintRight_toRightOf="@+id/content_main"
+        app:layout_constraintTop_toTopOf="@+id/content_main"
+        app:layout_constraintBottom_toBottomOf="@+id/content_main" />
+
     <RelativeLayout
         android:id="@+id/bottomLayout"
         android:layout_width="0dp"
@@ -51,11 +60,12 @@
             android:layout_alignTop="@id/iv_album"
             android:layout_margin="@dimen/bottom_tv_margin"
             android:layout_toRightOf="@id/iv_album"
+            android:textSize="@dimen/bottom_tv_title_size"
             android:text="三个和尚"
             android:textColor="?android:attr/textColorHighlight" />
 
         <TextView
-            android:id="@+id/tv_album_name"
+            android:id="@+id/tv_songs_in_total"
             style="@style/SingleLineTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,6 +84,8 @@
         <ImageView
             android:id="@+id/iv_play"
             android:layout_toLeftOf="@id/iv_next"
+            android:layout_height="@dimen/bottom_iv_play_size"
+            android:layout_width="@dimen/bottom_iv_play_size"
             android:src="@drawable/playbar_btn_play"
             style="@style/PlayBarButtonStyle" />
 

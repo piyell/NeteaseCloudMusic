@@ -77,7 +77,7 @@ public class MusicFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_music, container, false);
         ButterKnife.bind(this, view);
 
-        mViewpager.setAdapter(new MusicAdapter(view,getChildFragmentManager()));
+        mViewpager.setAdapter(new MusicPagerAdapter(view,getChildFragmentManager()));
         mTabLayout.setupWithViewPager(mViewpager);
 
         return view;

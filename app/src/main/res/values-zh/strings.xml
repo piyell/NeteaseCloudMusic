@@ -9,6 +9,8 @@
     <string name="album">专辑</string>
     <string name="folder">文件夹</string>
     <string name="single">单曲</string>
+    <string name="play_all">播放全部</string>
+    <string name="songs_in_total">(共$1s首)</string>
 
     <string-array name="music">
         <item>@string/single</item>

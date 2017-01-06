@@ -16,18 +16,18 @@ import butterknife.ButterKnife;
  * Created by piyel_000 on 2017/1/3.
  */
 
-class MusicAdapter extends FragmentPagerAdapter {
+class MusicPagerAdapter extends FragmentPagerAdapter {
     @BindArray(R.array.music)
     String[] mTabName;
 
-    public MusicAdapter(View view, FragmentManager fm) {
+    public MusicPagerAdapter(View view, FragmentManager fm) {
         super(fm);
         ButterKnife.bind(this,view);
     }
 
     @Override
     public Fragment getItem(int position) {
-        return SubMusicFragment.newInstance(" ", " ");
+        return SubMusicFragment.newInstance(SubMusicFragment.TYPE_SINGLE);
     }
 
     @Override

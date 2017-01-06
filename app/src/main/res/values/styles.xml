@@ -24,6 +24,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="StartAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/splash2</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
     <!-- toolbar RadioButton的样式  -->
     <style name="ActionRadioStyle">
         <item name="android:layout_width">@android:dimen/app_icon_size</item>
@@ -46,6 +54,7 @@
         <item name="android:clickable">true</item>
         <item name="android:layout_width">@dimen/bottom_iv_size</item>
         <item name="android:layout_height">@dimen/bottom_iv_size</item>
+        <item name="android:scaleType">centerInside</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 

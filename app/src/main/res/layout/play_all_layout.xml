@@ -14,12 +14,12 @@
         android:layout_height="@dimen/item_iv_size"
         android:layout_alignParentStart="true"
         android:tint="@android:color/black"
-        android:paddingRight="@dimen/song_list_item_padding"
-        android:paddingEnd="@dimen/song_list_item_padding"
+        android:layout_marginRight="@dimen/song_list_item_padding"
+        android:layout_marginEnd="@dimen/song_list_item_padding"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
-        android:src="@drawable/play" />
+        app:srcCompat="@drawable/ic_play" />
 
     <TextView
         android:id="@+id/tv_play_all"
@@ -30,6 +30,8 @@
         android:layout_toEndOf="@id/iv_play"
         android:text="@string/play_all"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/song_list_item_padding"
+        android:layout_marginStart="@dimen/song_list_item_padding"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="@dimen/bottom_tv_title_size"
         android:layout_alignBaseline="@+id/tv_songs_in_total"
@@ -55,8 +57,8 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:clickable="true"
-        android:background="?attr/selectableItemBackground"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/menu_more" />
+        app:srcCompat="@drawable/ic_list" />
 
 </RelativeLayout>

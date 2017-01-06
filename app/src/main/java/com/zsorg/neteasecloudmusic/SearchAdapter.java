@@ -1,7 +1,6 @@
 package com.zsorg.neteasecloudmusic;
 
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 

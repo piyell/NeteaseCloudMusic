@@ -9,36 +9,47 @@
     android:padding="@dimen/song_list_item_padding">
 
     <ImageView
-        android:id="@+id/iv_playing"
+        android:id="@+id/iv_folder"
         android:layout_width="@dimen/item_iv_size"
         android:layout_height="@dimen/item_iv_size"
         android:layout_alignParentStart="true"
-        android:visibility="gone"
         android:layout_marginRight="@dimen/song_list_item_padding"
         android:layout_marginEnd="@dimen/song_list_item_padding"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/ic_voice" />
+        app:srcCompat="@drawable/ic_folder" />
 
     <TextView
-        android:id="@+id/tv_song_name"
+        android:id="@+id/tv_folder_name"
         style="@style/SingleLineTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/iv_playing"
-        android:layout_toEndOf="@id/iv_playing"
+        android:layout_toRightOf="@id/iv_folder"
+        android:layout_toEndOf="@id/iv_folder"
         android:layout_margin="@dimen/bottom_tv_margin"
         android:text="三个和尚"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="@dimen/bottom_tv_title_size" />
 
     <TextView
-        android:id="@+id/tv_songs_in_total"
+        android:id="@+id/tv_songs_count"
         style="@style/SingleLineTextStyle"
-        android:layout_toRightOf="@id/iv_playing"
-        android:layout_toEndOf="@id/iv_playing"
+        android:layout_toRightOf="@id/iv_folder"
+        android:layout_toEndOf="@id/iv_folder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/tv_folder_name"
+        android:layout_margin="@dimen/bottom_tv_margin"
+        android:text="@string/songs_count"
+        android:textSize="@dimen/bottom_tv_small_size" />
+    <TextView
+        android:id="@+id/tv_folder_path"
+        style="@style/SingleLineTextStyle"
+        android:layout_toRightOf="@id/tv_songs_count"
+        android:layout_toEndOf="@id/tv_songs_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -46,7 +57,6 @@
         android:layout_margin="@dimen/bottom_tv_margin"
         android:text="儿童歌曲"
         android:textSize="@dimen/bottom_tv_small_size" />
-
     <ImageView
         android:id="@+id/iv_more"
         android:layout_width="@dimen/item_iv_size"

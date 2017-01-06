@@ -19,15 +19,16 @@ import butterknife.ButterKnife;
 class MusicPagerAdapter extends FragmentPagerAdapter {
     @BindArray(R.array.music)
     String[] mTabName;
+    private int[] mFragmentType = {SubMusicFragment.TYPE_SINGLE, SubMusicFragment.TYPE_SINGER, SubMusicFragment.TYPE_ALBUM, SubMusicFragment.TYPE_FOLDER};
 
     public MusicPagerAdapter(View view, FragmentManager fm) {
         super(fm);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
     }
 
     @Override
     public Fragment getItem(int position) {
-        return SubMusicFragment.newInstance(SubMusicFragment.TYPE_SINGLE);
+        return SubMusicFragment.newInstance(mFragmentType[position]);
     }
 
     @Override

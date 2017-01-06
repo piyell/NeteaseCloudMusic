@@ -84,10 +84,13 @@ public class SubMusicFragment extends Fragment {
                 mAdapter = new MusicSingleAdapter(getActivity().getLayoutInflater());
                 break;
             case TYPE_SINGER:
+                mAdapter = new MusicSingerAdapter(getActivity().getLayoutInflater());
                 break;
             case TYPE_ALBUM:
+                mAdapter = new MusicAlbumAdapter(getActivity().getLayoutInflater());
                 break;
             case TYPE_FOLDER:
+                mAdapter = new MusicFolderAdapter(getActivity().getLayoutInflater());
                 break;
         }
         mRecyclerView.setAdapter(mAdapter);

@@ -1,15 +1,19 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.presenters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.zsorg.neteasecloudmusic.BaseAdapter;
+import com.zsorg.neteasecloudmusic.BaseHolder;
+import com.zsorg.neteasecloudmusic.R;
+
 /**
  * Created by piyel_000 on 2017/1/5.
  */
 
-class MusicSingleAdapter extends BaseAdapter {
+public class MusicSingleAdapter extends BaseAdapter {
     private final int TYPE_HEAD = 1;
     private final int TYPE_CONTENT = 0;
 

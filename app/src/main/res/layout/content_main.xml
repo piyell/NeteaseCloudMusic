@@ -36,14 +36,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_alignParentBottom="true"
-        android:background="?attr/tabBackground"
+        android:background="@drawable/ripple_with_white_background"
         android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/content_main"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/content_main"
-        app:layout_constraintRight_toRightOf="@+id/content_main">
+        app:layout_constraintRight_toRightOf="@+id/content_main"
+        android:layout_marginBottom="-1dp">
 
         <RelativeLayout
             style="@style/SingleLineTextStyle"
@@ -62,7 +62,7 @@
                 android:layout_marginEnd="@dimen/bottom_layout_padding"
                 android:layout_marginStart="@dimen/bottom_layout_padding"
                 android:scaleType="centerInside"
-                android:src="@drawable/bottom_iv_default_src" />
+                android:src="@drawable/album_blank" />
 
             <TextView
                 android:id="@+id/tv_song_name"
@@ -119,11 +119,11 @@
             android:id="@+id/pb_progress"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="8dip"
-            android:layout_marginBottom="-4dip"
+            android:layout_height="@dimen/progress_bar_height"
+            android:layout_marginBottom="@dimen/progress_bar_margin"
             android:indeterminate="false"
             android:max="100"
-            android:progress="0" />
+            android:progress="50" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

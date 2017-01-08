@@ -1,5 +1,6 @@
 package com.zsorg.neteasecloudmusic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.view.ViewPager;
@@ -16,8 +17,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
 
+import com.zsorg.neteasecloudmusic.presenters.SearchAdapter;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, SearchView.OnCloseListener, ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
@@ -104,6 +108,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     /**
      * SearchView单击事件
      *
@@ -117,6 +126,15 @@ public class MainActivity extends AppCompatActivity
         mRvSearch.setVisibility(View.VISIBLE);
     }
 
+    @OnClick(R.id.bottomLayout)
+    public void onPlayClick(){
+        startActivity(new Intent(this,PlayerActivity.class));
+    }
+
+    /**
+     * SearchView关闭事件
+     *
+     */
     @Override
     public boolean onClose() {
         mRadioGroup.setVisibility(View.VISIBLE);

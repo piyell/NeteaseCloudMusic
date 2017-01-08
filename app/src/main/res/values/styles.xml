@@ -59,6 +59,17 @@
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 
+    <!-- play Activity图片按钮的样式  -->
+    <style name="PlayActivityButtonStyle" parent="PlayActivityButtonWithoutMarginStyle">
+        <item name="android:layout_margin">@dimen/play_activity_btn_margin</item>
+        <!--<item name="android:layout_marginRight">@dimen/play_activity_btn_margin</item>-->
+    </style>
+
+    <style name="PlayActivityButtonWithoutMarginStyle">
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/btn_play_ripple</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:elevation" tools:targetApi="lollipop">0dp</item>
     </style>

@@ -1,14 +1,17 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.presenters;
 
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.zsorg.neteasecloudmusic.BaseAdapter;
+import com.zsorg.neteasecloudmusic.R;
+
 /**
  * Created by piyel_000 on 2017/1/5.
  */
 
-class SearchAdapter extends BaseAdapter<SongListItemHolder> {
+public class SearchAdapter extends BaseAdapter<SongListItemHolder> {
 
     public SearchAdapter(@NonNull LayoutInflater inflater) {
         super(inflater);

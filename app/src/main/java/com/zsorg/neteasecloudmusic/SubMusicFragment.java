@@ -10,6 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zsorg.neteasecloudmusic.presenters.MusicAlbumAdapter;
+import com.zsorg.neteasecloudmusic.presenters.MusicFolderAdapter;
+import com.zsorg.neteasecloudmusic.presenters.MusicSingerAdapter;
+import com.zsorg.neteasecloudmusic.presenters.MusicSingleAdapter;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

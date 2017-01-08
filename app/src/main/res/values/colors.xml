@@ -4,4 +4,5 @@
     <color name="colorPrimary">#cd3d3d</color>
     <color name="colorPrimaryDark">#cd3d3d</color>
     <color name="colorAccent">#cd3d3d</color>
+    <color name="gray">#cecece</color>
 </resources>

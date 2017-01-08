@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.presenters;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,9 @@ import android.support.v4.view.PagerAdapter;
 import android.telephony.SmsMessage;
 import android.view.View;
 
+import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.SubMusicFragment;
+
 import butterknife.BindArray;
 import butterknife.BindString;
 import butterknife.ButterKnife;
@@ -16,7 +19,7 @@ import butterknife.ButterKnife;
  * Created by piyel_000 on 2017/1/3.
  */
 
-class MusicPagerAdapter extends FragmentPagerAdapter {
+public class MusicPagerAdapter extends FragmentPagerAdapter {
     @BindArray(R.array.music)
     String[] mTabName;
     private int[] mFragmentType = {SubMusicFragment.TYPE_SINGLE, SubMusicFragment.TYPE_SINGER, SubMusicFragment.TYPE_ALBUM, SubMusicFragment.TYPE_FOLDER};

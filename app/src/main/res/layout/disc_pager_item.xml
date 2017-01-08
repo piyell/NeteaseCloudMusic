@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:src="@drawable/play_disc_small"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="@dimen/play_activity_disc"
+        android:layout_height="@dimen/play_activity_disc"/>
+    <ImageView
+        android:src="@drawable/disc_song_small"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="@dimen/play_activity_disc"
+        android:layout_height="@dimen/play_activity_disc"/>
+
+</FrameLayout>

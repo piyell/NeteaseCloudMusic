@@ -17,4 +17,14 @@
     <dimen name="singer_list_item_padding">5dp</dimen>
     <dimen name="item_big_iv_long_size">53dp</dimen>
     <dimen name="tab_height">39dp</dimen>
+    <dimen name="play_activity_btn_margin">12dp</dimen>
+    <dimen name="play_activity_btn_size">45dp</dimen>
+    <dimen name="play_activity_btn_big_size">55dp</dimen>
+    <dimen name="play_activity_bottom_margin">8dp</dimen>
+    <dimen name="play_activity_disc">250dp</dimen>
+    <dimen name="needle_width">100dp</dimen>
+    <dimen name="needle_height">170dp</dimen>
+    <dimen name="needle_margin_right">50dp</dimen>
+    <dimen name="progress_bar_height">8dip</dimen>
+    <dimen name="progress_bar_margin">-4dip</dimen>
 </resources>

@@ -14,7 +14,7 @@ public abstract class BaseAdapter<T extends BaseHolder> extends RecyclerView.Ada
 
     private OnItemCLickListener mListener;
 
-    final LayoutInflater mInflater;
+    public final LayoutInflater mInflater;
 
     public BaseAdapter(@NonNull LayoutInflater inflater) {
         mInflater = inflater;

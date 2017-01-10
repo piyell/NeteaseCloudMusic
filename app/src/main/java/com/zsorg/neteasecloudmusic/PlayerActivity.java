@@ -18,6 +18,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     Toolbar toolbar;
     @BindView(R.id.play_viewpager)
     ViewPager viewPager;
+    @BindView(R.id.iv_needle)
+    ImageView needle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
         viewPager.setAdapter(new DiscPagerAdapter(getLayoutInflater()));
 
+        viewPager.addOnPageChangeListener(new DiscPageChangeListener(viewPager,needle));
 
     }
 
@@ -64,4 +67,5 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         finish();
     }
+
 }

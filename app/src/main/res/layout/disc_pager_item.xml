@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:src="@drawable/play_disc_small"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="@dimen/play_activity_disc"
-        android:layout_height="@dimen/play_activity_disc"/>
-    <ImageView
-        android:src="@drawable/disc_song_small"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="@dimen/play_activity_disc"
-        android:layout_height="@dimen/play_activity_disc"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/play_activity_disc"
+    android:layout_height="@dimen/play_activity_disc"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
 
+    <android.support.percent.PercentFrameLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="@dimen/play_activity_disc"
+        android:layout_height="@dimen/play_activity_disc">
+
+        <ImageView
+            android:layout_width="@dimen/play_activity_disc"
+            android:layout_height="@dimen/play_activity_disc"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/play_disc_small"
+            app:layout_heightPercent="99%"
+            app:layout_widthPercent="99%" />
+
+        <ImageView
+            android:layout_width="@dimen/play_activity_disc"
+            android:layout_height="@dimen/play_activity_disc"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@drawable/disc_song_small"
+            app:layout_heightPercent="68%"
+            app:layout_widthPercent="68%" />
+    </android.support.percent.PercentFrameLayout>
 </FrameLayout>

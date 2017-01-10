@@ -25,14 +25,14 @@ class DiscPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = mInflater.inflate(R.layout.disc_pager_item, container, false);
+        View view = mInflater.inflate(R.layout.disc_pager_item, container,false);
         container.addView(view);
         return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-//        container.removeView((View) object);
+        container.removeView((View) object);
     }
 
     @Override

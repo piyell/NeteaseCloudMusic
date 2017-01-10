@@ -27,4 +27,5 @@
     <dimen name="needle_margin_right">50dp</dimen>
     <dimen name="progress_bar_height">8dip</dimen>
     <dimen name="progress_bar_margin">-4dip</dimen>
+    <dimen name="needle_margin_top">-25dp</dimen>
 </resources>

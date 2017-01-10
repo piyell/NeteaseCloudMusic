@@ -1,5 +1,7 @@
 package com.zsorg.neteasecloudmusic;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import butterknife.OnClick;
 
 public class PlayerActivity extends AppCompatActivity implements View.OnClickListener {
 
+    @BindView(R.id.activity_player)
+    View rootView;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.play_viewpager)
@@ -40,6 +44,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         viewPager.setAdapter(new DiscPagerAdapter(getLayoutInflater()));
 
         viewPager.addOnPageChangeListener(new DiscPageChangeListener(viewPager,needle));
+
+        rootView.setBackground(BlurUtil.createBlurredImageFromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.play_bg_night),this,20));
 
     }
 

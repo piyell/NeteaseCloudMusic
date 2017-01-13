@@ -13,7 +13,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -26,6 +26,10 @@
         </activity>
         <activity
             android:name=".PlayerActivity"
+            android:theme="@style/AppTheme.Translucent" />
+        <activity
+            android:name=".ScanMusicActivity"
+            android:label="@string/title_activity_scan_music"
             android:theme="@style/AppTheme.Translucent" />
     </application>
 

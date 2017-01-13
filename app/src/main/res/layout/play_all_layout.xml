@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:padding="@dimen/song_list_item_padding"
@@ -46,7 +47,7 @@
         android:layout_toRightOf="@id/tv_play_all"
         android:layout_toEndOf="@id/tv_play_all"
         android:layout_margin="@dimen/bottom_tv_margin"
-        android:text="@string/songs_in_total"
+        tools:text="@string/songs_in_total"
          />
 
     <ImageView

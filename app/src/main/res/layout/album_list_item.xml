@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:orientation="vertical"
@@ -30,7 +31,7 @@
         android:layout_toRightOf="@id/iv_album"
         android:layout_toEndOf="@id/iv_album"
         android:layout_margin="@dimen/bottom_tv_margin"
-        android:text="三个和尚"
+        tools:text="三个和尚"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="@dimen/bottom_tv_title_size" />
 
@@ -44,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@id/tv_singer"
         android:layout_margin="@dimen/bottom_tv_margin"
-        android:text="@string/songs_count"
+        tools:text="@string/songs_count"
         android:textSize="@dimen/bottom_tv_small_size" />
 
     <ImageView

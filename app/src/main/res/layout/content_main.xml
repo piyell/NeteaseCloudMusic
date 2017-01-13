@@ -73,7 +73,7 @@
                 android:layout_margin="@dimen/bottom_tv_margin"
                 android:layout_toEndOf="@id/iv_album"
                 android:layout_toRightOf="@id/iv_album"
-                android:text="三个和尚"
+                tools:text="三个和尚"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="@dimen/bottom_tv_title_size" />
 
@@ -86,7 +86,7 @@
                 android:layout_margin="@dimen/bottom_tv_margin"
                 android:layout_toEndOf="@id/iv_album"
                 android:layout_toRightOf="@id/iv_album"
-                android:text="儿童歌曲"
+                tools:text="儿童歌曲"
                 android:textSize="@dimen/bottom_tv_small_size" />
 
             <ImageView

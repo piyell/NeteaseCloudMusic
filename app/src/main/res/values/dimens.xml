@@ -28,4 +28,9 @@
     <dimen name="progress_bar_height">8dip</dimen>
     <dimen name="progress_bar_margin">-4dip</dimen>
     <dimen name="needle_margin_top">-25dp</dimen>
+    <dimen name="progress_text_size">12sp</dimen>
+    <dimen name="scan_activity_margin">16dp</dimen>
+    <dimen name="scan_btn_padding">8dp</dimen>
+    <dimen name="scan_btn_radius">3dp</dimen>
+    <dimen name="scan_tv_back_size">18sp</dimen>
 </resources>

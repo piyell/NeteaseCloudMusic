@@ -2,6 +2,7 @@ package com.zsorg.neteasecloudmusic;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,10 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.schedulers.Schedulers;
 
 public class PlayerActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,7 +50,12 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
         viewPager.addOnPageChangeListener(new DiscPageChangeListener(viewPager,needle));
 
-        rootView.setBackground(BlurUtil.createBlurredImageFromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.play_bg_night),this,20));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            rootView.setBackground(BlurUtil.createBlurredImageFromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.play_bg_night), this, 20));
+        } else {
+            rootView.setBackgroundDrawable(BlurUtil.createBlurredImageFromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.play_bg_night), this, 20));
+        }
 
     }
 

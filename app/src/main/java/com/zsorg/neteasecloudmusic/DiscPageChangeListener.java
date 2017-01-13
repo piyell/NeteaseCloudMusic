@@ -1,12 +1,11 @@
 package com.zsorg.neteasecloudmusic;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.os.Build;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,13 +32,10 @@ class DiscPageChangeListener implements ViewPager.OnPageChangeListener, Animator
         mViewPager = viewPager;
         mNeedle = needle;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            mAnimator = ObjectAnimator.ofFloat(needle, "rotation", START_VALUE, END_VALUE);
-            mAnimator.setDuration(500);
-            mAnimator.setInterpolator(new LinearInterpolator());
-            mAnimator.addListener(this);
-        } else {
-        }
+        mAnimator = ObjectAnimator.ofFloat(needle, "rotation", START_VALUE, END_VALUE);
+        mAnimator.setDuration(500);
+        mAnimator.setInterpolator(new LinearInterpolator());
+        mAnimator.addListener(this);
 
 
     }
@@ -60,35 +56,23 @@ class DiscPageChangeListener implements ViewPager.OnPageChangeListener, Animator
 
     @Override
     public void onPageScrollStateChanged(final int state) {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            if (state == ViewPager.SCROLL_STATE_IDLE) {//固定状态
-//                if (((float) mAnimator.getAnimatedValue()) == END_VALUE) {
-//
-//                    mAnimator.setFloatValues(END_VALUE, START_VALUE);
-//                    if (!mAnimator.isRunning()) {
-//                        mAnimator.start();
-//                    }
-//                }
-                mViewPagerState = state;
-                playAnimation();
-            } else {//正在滚动
-                mViewPagerState = state;
-                playAfterEndAnimation = false;
-                if (((float) mAnimator.getAnimatedValue()) == START_VALUE) {
-                    mAnimator.setFloatValues(START_VALUE, END_VALUE);
-                    if (!mAnimator.isRunning()) {
-                        mAnimator.start();
-                    }
+        if (state == ViewPager.SCROLL_STATE_IDLE) {//固定状态
+            mViewPagerState = state;
+            playAnimation();
+        } else {//正在滚动
+            mViewPagerState = state;
+            playAfterEndAnimation = false;
+            if (((float) mAnimator.getAnimatedValue()) == START_VALUE) {
+                mAnimator.setFloatValues(START_VALUE, END_VALUE);
+                if (!mAnimator.isRunning()) {
+                    mAnimator.start();
                 }
             }
-
         }
     }
 
     private void playAnimation() {
         if (mViewPagerState == ViewPager.SCROLL_STATE_IDLE) {
-//            if (((float) mAnimator.getAnimatedValue()) == END_VALUE) {
                 Observable.timer(500, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Consumer<Long>() {
@@ -107,7 +91,6 @@ class DiscPageChangeListener implements ViewPager.OnPageChangeListener, Animator
                                 }
                             }
                         });
-//            }
         }
     }
 

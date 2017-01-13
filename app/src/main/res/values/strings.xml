@@ -14,6 +14,7 @@
     <string name="play_all">播放全部</string>
     <string name="songs_in_total">(共$1s首)</string>
     <string name="songs_count">$1s首</string>
+    <string name="scan_local_music">扫描本地音乐</string>
 
     <string-array name="music">
         <item>@string/single</item>
@@ -21,5 +22,8 @@
         <item>@string/album</item>
         <item>@string/folder</item>
     </string-array>
+    <string name="title_activity_scan_music">ScanMusicActivity</string>
+    <string name="scanning_percent">正在扫描...$1s%</string>
+    <string name="back_to_music">回到我的音乐</string>
 
 </resources>

@@ -26,6 +26,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile files('libs/renderscript-v8.jar')
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:percent:25.1.0'
@@ -36,5 +37,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.android.support:support-v4:25.1.0'
     testCompile 'junit:junit:4.12'
-    compile files('libs/renderscript-v8.jar')
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.nineoldandroids:parent:2.4.0'
 }

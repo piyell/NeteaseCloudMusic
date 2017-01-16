@@ -33,6 +33,7 @@
 
         <ImageView
             android:id="@+id/iv_scan_effect"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
@@ -41,7 +42,7 @@
             app:layout_heightPercent="15%"
             app:layout_widthPercent="44%" />
 
-        <com.zsorg.neteasecloudmusic.views.SquareImageView
+        <com.zsorg.neteasecloudmusic.widgets.SquareImageView
             android:id="@+id/iv_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,6 +77,24 @@
         app:layout_constraintTop_toBottomOf="@id/scanLayout" />
 
     <TextView
+        android:id="@+id/tv_scan_or_cancel"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/scan_activity_margin"
+        android:padding="@dimen/scan_btn_padding"
+        android:background="@drawable/btn_stroke_gray"
+        android:clickable="true"
+        android:text="@string/scan_immediately"
+        android:textColor="?android:attr/textColorHighlight"
+        android:textSize="@dimen/scan_tv_back_size"
+        app:layout_constraintTop_toBottomOf="@id/tv_scan"
+        app:layout_constraintBottom_toBottomOf="@id/activity_scan"
+        app:layout_constraintLeft_toLeftOf="@id/activity_scan"
+        app:layout_constraintRight_toRightOf="@id/activity_scan"
+        tools:targetApi="honeycomb" />
+
+    <TextView
         android:id="@+id/tv_back"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -84,6 +103,7 @@
         android:padding="@dimen/scan_btn_padding"
         android:background="@drawable/btn_color_primary"
         android:clickable="true"
+        android:visibility="gone"
         android:text="@string/back_to_music"
         android:textColor="?android:attr/textColorPrimaryInverse"
         android:textSize="@dimen/scan_tv_back_size"

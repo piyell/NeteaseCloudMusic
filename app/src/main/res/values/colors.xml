@@ -2,7 +2,9 @@
 <resources>
     <!--<color name="colorPrimary">#e20000</color>-->
     <color name="colorPrimary">#cd3d3d</color>
-    <color name="colorPrimaryDark">#d5cd3d3d</color>
+    <color name="colorPrimaryDark">#cd3d3d</color>
+    <color name="scanButtonColorPrimaryDark">#d5cd3d3d</color>
     <color name="colorAccent">#cd3d3d</color>
     <color name="gray">#cecece</color>
+    <color name="ltgray">#eaeaea</color>
 </resources>

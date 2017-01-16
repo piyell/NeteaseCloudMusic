@@ -1,10 +1,7 @@
-package com.zsorg.neteasecloudmusic.views;
+package com.zsorg.neteasecloudmusic.widgets;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 /**
  * Created by piyel_000 on 2016/6/10.

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.zsorg.neteasecloudmusic.MusicUtil;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.utils.MP3Util;
 
 import org.reactivestreams.Publisher;
 
@@ -22,19 +23,24 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DiskMusicModel implements IMusicModel {
     @Override
-    public Flowable<MusicBean> loadMusicList() {
-        return mLoadMusicList(Environment.getExternalStorageDirectory())
+    public Flowable<MusicBean> scanMusicFile() {
+        return mScanMusicOnStorage(Environment.getExternalStorageDirectory())
                 .observeOn(Schedulers.computation())
                 .flatMap(new Function<File, Publisher<MusicBean>>() {
                     @Override
                     public Publisher<MusicBean> apply(File file) throws Exception {
-                        return Flowable.just(new MusicBean(file.getAbsolutePath(), file.getName()));
+                        return Flowable.just(MP3Util.parseMP3File(file.getAbsolutePath()));
                     }
                 });
     }
 
+    @Override
+    public Flowable<MusicBean> loadMusicFile() {
+        return null;
+    }
 
-    private Flowable<File> mLoadMusicList(@NonNull final File file) {
+
+    private Flowable<File> mScanMusicOnStorage(@NonNull final File file) {
         File[] items = file.listFiles();
         if (null != items) {
             return Flowable.fromArray(items).observeOn(Schedulers.computation()).flatMap(new Function<File, Publisher<File>>() {
@@ -42,7 +48,7 @@ public class DiskMusicModel implements IMusicModel {
                 public Publisher<File> apply(File file) throws Exception {
                     if (file != null) {
                         if (file.isDirectory()) {
-                            return mLoadMusicList(file);
+                            return mScanMusicOnStorage(file);
                         } else {
                             return Flowable.just(file).filter(new Predicate<File>() {
                                 @Override

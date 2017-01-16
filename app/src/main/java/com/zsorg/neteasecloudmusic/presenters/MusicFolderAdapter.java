@@ -8,6 +8,8 @@ import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.BaseHolder;
 import com.zsorg.neteasecloudmusic.R;
 
+import java.util.List;
+
 /**
  * Created by piyel_000 on 2017/1/6.
  */
@@ -19,6 +21,12 @@ public class MusicFolderAdapter extends BaseAdapter {
 
     @Override
     public void onBindHolder(BaseHolder holder, int position) {
+
+    }
+
+
+    @Override
+    public void setDatas(List list) {
 
     }
 

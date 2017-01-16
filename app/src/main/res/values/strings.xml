@@ -29,5 +29,6 @@
     <string name="cancel_scan">取消扫描</string>
     <string name="error_msg">错误:%s</string>
     <string name="scan_finish">扫描完成</string>
+    <string name="unknown">未知</string>
 
 </resources>

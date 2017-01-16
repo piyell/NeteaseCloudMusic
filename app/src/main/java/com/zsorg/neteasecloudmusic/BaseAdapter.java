@@ -1,10 +1,12 @@
 package com.zsorg.neteasecloudmusic;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
+
+import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+
+import java.util.List;
 
 /**
  * Created by piyel_000 on 2017/1/5.
@@ -22,6 +24,11 @@ public abstract class BaseAdapter<T extends BaseHolder> extends RecyclerView.Ada
 
     public abstract void onBindHolder(T holder,int position);
 
+    public abstract void setDatas(List<MusicBean> list);
+
+    public MusicBean getDataAtPosition(int position){
+        return null;}
+
     public void setOnItemClickListener(OnItemCLickListener listener) {
         mListener = listener;
     }
@@ -33,4 +40,5 @@ public abstract class BaseAdapter<T extends BaseHolder> extends RecyclerView.Ada
         }
         onBindHolder(holder, position);
     }
+
 }

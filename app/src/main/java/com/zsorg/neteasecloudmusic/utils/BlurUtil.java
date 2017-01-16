@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;

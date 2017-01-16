@@ -15,9 +15,9 @@ import butterknife.ButterKnife;
 
 public class SongListItemHolder extends BaseHolder {
     @BindView(R.id.tv_song_name)
-    TextView tvSongName;
+    TextView tvTitle;
     @BindView(R.id.tv_songs_in_total)
-    TextView tvAlbumName;
+    TextView tvContent;
 
     public SongListItemHolder(View itemView) {
         super(itemView);

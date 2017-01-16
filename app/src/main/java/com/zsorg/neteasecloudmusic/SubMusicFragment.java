@@ -1,6 +1,7 @@
 package com.zsorg.neteasecloudmusic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,10 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.presenters.MusicAlbumAdapter;
 import com.zsorg.neteasecloudmusic.presenters.MusicFolderAdapter;
 import com.zsorg.neteasecloudmusic.presenters.MusicSingerAdapter;
 import com.zsorg.neteasecloudmusic.presenters.MusicSingleAdapter;
+import com.zsorg.neteasecloudmusic.presenters.SubMusicPresenter;
+import com.zsorg.neteasecloudmusic.views.ISubMusicView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,7 +33,7 @@ import butterknife.ButterKnife;
  * Use the {@link SubMusicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SubMusicFragment extends Fragment {
+public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemCLickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String MUSIC_TYPE = "MUSIC_TYPE";
@@ -99,6 +105,11 @@ public class SubMusicFragment extends Fragment {
                 break;
         }
         mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(this);
+
+        new SubMusicPresenter(this).requestList();
+
         return view;
     }
 
@@ -124,6 +135,28 @@ public class SubMusicFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void showItems(List<MusicBean> list) {
+        mAdapter.setDatas(list);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        switch (mMusicType) {
+            case TYPE_SINGLE:
+                Intent intent = new Intent(getActivity(), PlayerActivity.class);
+                intent.putExtra(CONST.INTENT_PLAYER_EXTRA, mAdapter.getDataAtPosition(position));
+                startActivity(intent);
+                break;
+            case TYPE_SINGER:
+                break;
+            case TYPE_ALBUM:
+                break;
+            case TYPE_FOLDER:
+                break;
+        }
     }
 
     /**

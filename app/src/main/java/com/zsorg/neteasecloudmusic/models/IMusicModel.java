@@ -10,6 +10,8 @@ import io.reactivex.Flowable;
  */
 
 public interface IMusicModel {
-    Flowable<MusicBean> loadMusicList();
+    Flowable<MusicBean> scanMusicFile();
+
+    Flowable<MusicBean> loadMusicFile();
 
 }

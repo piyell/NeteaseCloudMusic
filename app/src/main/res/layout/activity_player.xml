@@ -132,6 +132,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tv_start_time"
                 style="@style/SingleLineTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,6 +151,7 @@
                 app:thumbTint="@color/gray" />
 
             <TextView
+                android:id="@+id/tv_end_time"
                 style="@style/SingleLineTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

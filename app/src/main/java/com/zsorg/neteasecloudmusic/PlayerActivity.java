@@ -1,6 +1,5 @@
 package com.zsorg.neteasecloudmusic;
 
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
@@ -10,14 +9,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.utils.BlurUtil;
+import com.zsorg.neteasecloudmusic.utils.TimeUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.schedulers.Schedulers;
 
 public class PlayerActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +29,11 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     ViewPager viewPager;
     @BindView(R.id.iv_needle)
     ImageView needle;
+    @BindView(R.id.tv_start_time)
+    TextView tvStartTime;
+    @BindView(R.id.tv_end_time)
+    TextView tvEndTime;
+    private MusicBean mMusicBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,16 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         ButterKnife.bind(this);
 
 
+        mMusicBean = getIntent().getParcelableExtra(CONST.INTENT_PLAYER_EXTRA);
+
+        tvEndTime.setText(TimeUtil.formatTime(mMusicBean.getDuration()));
+
+
         setSupportActionBar(toolbar);
+
+        setTitle(mMusicBean.getName());
+        toolbar.setSubtitle(mMusicBean.getSinger());
+
         toolbar.setNavigationOnClickListener(this);
         ActionBar actionBar = getSupportActionBar();
         if (null!= actionBar) {

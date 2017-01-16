@@ -1,6 +1,7 @@
 package com.zsorg.neteasecloudmusic;
 
 import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.ActivityCompat;
@@ -39,6 +40,10 @@ public class ScanMusicActivity extends AppCompatActivity implements IScanMusicVi
     private TranslateAnimation scanAnimation;
     private ScanMusicPresenter mPresenter;
 
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

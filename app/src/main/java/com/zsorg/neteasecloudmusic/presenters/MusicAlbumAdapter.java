@@ -8,6 +8,8 @@ import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.BaseHolder;
 import com.zsorg.neteasecloudmusic.R;
 
+import java.util.List;
+
 /**
  * Created by piyel_000 on 2017/1/6.
  */
@@ -23,8 +25,18 @@ public class MusicAlbumAdapter extends BaseAdapter {
     }
 
     @Override
+    public void setDatas(List list) {
+
+    }
+
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new AlbumHolder(mInflater.inflate(R.layout.album_list_item, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
     }
 
     @Override

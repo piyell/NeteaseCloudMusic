@@ -2,6 +2,10 @@ package com.zsorg.neteasecloudmusic.views;
 
 import android.content.Context;
 
+import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+
+import java.util.List;
+
 /**
  * Project:NeteaseCloudMusic
  *
@@ -10,12 +14,8 @@ import android.content.Context;
  * E-mail:piyell@qq.com
  */
 
-public interface IScanMusicView {
-    void startScan();
-
-    void finishScan();
-
-    void onError(Throwable throwable);
+public interface ISubMusicView{
+    void showItems(List<MusicBean> list);
 
     Context getContext();
 }

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.R;
 
+import java.util.List;
+
 /**
  * Created by piyel_000 on 2017/1/5.
  */
@@ -24,6 +26,12 @@ public class SearchAdapter extends BaseAdapter<SongListItemHolder> {
 
     @Override
     public void onBindHolder(SongListItemHolder holder, int position) {
+
+    }
+
+
+    @Override
+    public void setDatas(List list) {
 
     }
 

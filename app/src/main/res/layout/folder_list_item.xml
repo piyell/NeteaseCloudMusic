@@ -21,6 +21,19 @@
         android:scaleType="centerInside"
         app:srcCompat="@drawable/ic_folder" />
 
+    <!--<TextView-->
+        <!--android:id="@+id/tv_folder_name"-->
+        <!--style="@style/SingleLineTextStyle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_toRightOf="@id/iv_folder"-->
+        <!--android:layout_toEndOf="@id/iv_folder"-->
+        <!--android:layout_margin="@dimen/bottom_tv_margin"-->
+        <!--tools:text="三个和尚"-->
+        <!--android:textColor="?android:attr/textColorPrimary"-->
+        <!--android:textSize="@dimen/bottom_tv_title_size" />-->
+
     <TextView
         android:id="@+id/tv_folder_name"
         style="@style/SingleLineTextStyle"
@@ -29,6 +42,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/iv_folder"
         android:layout_toEndOf="@id/iv_folder"
+        android:layout_toLeftOf="@+id/iv_right"
+        android:layout_toStartOf="@+id/iv_right"
         android:layout_margin="@dimen/bottom_tv_margin"
         tools:text="三个和尚"
         android:textColor="?android:attr/textColorPrimary"
@@ -53,13 +68,14 @@
         android:layout_toEndOf="@id/tv_songs_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/tv_song_name"
+        android:layout_alignTop="@id/tv_songs_count"
+        android:layout_toLeftOf="@+id/iv_right"
+        android:layout_toStartOf="@+id/iv_right"
         android:layout_margin="@dimen/bottom_tv_margin"
         tools:text="儿童歌曲"
         android:textSize="@dimen/bottom_tv_small_size" />
     <ImageView
-        android:id="@+id/iv_more"
+        android:id="@+id/iv_right"
         android:layout_width="@dimen/item_iv_size"
         android:layout_height="@dimen/item_iv_size"
         android:layout_alignParentEnd="true"

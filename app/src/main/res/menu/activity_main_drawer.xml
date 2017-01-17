@@ -3,11 +3,6 @@
 
     <group android:gravity="left" android:layout_gravity="left">
         <item
-            android:id="@+id/nav_camera"
-            android:gravity="left"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
             android:id="@+id/nav_scan"
             android:icon="@drawable/ic_scan_music"
             android:title="@string/scan_local_music" />

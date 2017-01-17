@@ -20,7 +20,7 @@ public class DiskMusicHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table if not exists diskMusic(name varchar not null,singer varchar,album varchar,duration integer ,path varchar); ");
+        db.execSQL("create table if not exists diskMusic(name varchar not null,singer varchar,album varchar,duration integer ,path varchar ,parent varchar); ");
     }
 
     @Override

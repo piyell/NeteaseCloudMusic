@@ -13,7 +13,7 @@
     <string name="single">单曲</string>
     <string name="play_all">播放全部</string>
     <string name="songs_in_total">(共%s首)</string>
-    <string name="songs_count">%s首</string>
+    <string name="songs_count">%s首&#160;</string>
     <string name="scan_local_music">扫描本地音乐</string>
 
     <string-array name="music">

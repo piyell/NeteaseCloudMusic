@@ -24,6 +24,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.zsorg.neteasecloudmusic.CONST.MUSIC_TYPE;
+import static com.zsorg.neteasecloudmusic.CONST.TYPE_ALBUM;
+import static com.zsorg.neteasecloudmusic.CONST.TYPE_FOLDER;
+import static com.zsorg.neteasecloudmusic.CONST.TYPE_SINGER;
+import static com.zsorg.neteasecloudmusic.CONST.TYPE_SINGLE;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,11 +42,7 @@ import butterknife.ButterKnife;
 public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemCLickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String MUSIC_TYPE = "MUSIC_TYPE";
-    public static final int TYPE_SINGLE = 0;
-    public static final int TYPE_SINGER = 1;
-    public static final int TYPE_ALBUM = 2;
-    public static final int TYPE_FOLDER = 3;
+
 
     private int mMusicType;
 
@@ -90,6 +92,8 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
         mRecyclerView.addItemDecoration(LineItemDecorator.getInstance());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        SubMusicPresenter subMusicPresenter = new SubMusicPresenter(this);
+
         switch (mMusicType) {
             case TYPE_SINGLE:
                 mAdapter = new MusicSingleAdapter(getActivity().getLayoutInflater());
@@ -108,7 +112,7 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
 
         mAdapter.setOnItemClickListener(this);
 
-        new SubMusicPresenter(this).requestList();
+        subMusicPresenter.requestList(mMusicType);
 
         return view;
     }
@@ -146,9 +150,11 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
     public void onItemClick(View view, int position) {
         switch (mMusicType) {
             case TYPE_SINGLE:
-                Intent intent = new Intent(getActivity(), PlayerActivity.class);
-                intent.putExtra(CONST.INTENT_PLAYER_EXTRA, mAdapter.getDataAtPosition(position));
-                startActivity(intent);
+                if (position>0) {
+                    Intent intent = new Intent(getActivity(), PlayerActivity.class);
+                    intent.putExtra(CONST.INTENT_PLAYER_EXTRA, mAdapter.getDataAtPosition(position-1));
+                    startActivity(intent);
+                }
                 break;
             case TYPE_SINGER:
                 break;

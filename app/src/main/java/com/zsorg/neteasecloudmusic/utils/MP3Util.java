@@ -23,6 +23,7 @@ public class MP3Util {
         String singer = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
         String album = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
         long duration = Long.valueOf(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+        mmr.release();
         return new MusicBean(name, singer, album,duration, path);
     }
 }

@@ -102,7 +102,7 @@
                     app:srcCompat="@drawable/ic_favorite" />
 
                 <ImageView
-                    android:id="@+id/iv_more"
+                    android:id="@+id/iv_right"
                     style="@style/PlayActivityButtonStyle"
                     android:layout_width="@dimen/play_activity_btn_size"
                     android:layout_height="@dimen/play_activity_btn_size"

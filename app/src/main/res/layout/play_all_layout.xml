@@ -51,7 +51,7 @@
          />
 
     <ImageView
-        android:id="@+id/iv_more"
+        android:id="@+id/iv_right"
         android:layout_width="@dimen/item_iv_size"
         android:layout_height="@dimen/item_iv_size"
         android:layout_alignParentEnd="true"

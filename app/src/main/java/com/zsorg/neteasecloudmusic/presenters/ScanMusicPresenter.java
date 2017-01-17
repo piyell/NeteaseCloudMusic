@@ -35,6 +35,7 @@ public class ScanMusicPresenter {
             @Override
             public void onSubscribe(Subscription s) {
                 iScanMusicView.startScan();
+                mDiskMusicDao.clearAll();
                 s.request(Integer.MAX_VALUE);
 
             }

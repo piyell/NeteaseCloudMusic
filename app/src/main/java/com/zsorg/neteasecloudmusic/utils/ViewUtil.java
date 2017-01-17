@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.utils;
 
 import android.os.Build;
 import android.view.View;

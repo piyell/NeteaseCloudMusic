@@ -8,6 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.telephony.SmsMessage;
 import android.view.View;
 
+import com.zsorg.neteasecloudmusic.CONST;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.SubMusicFragment;
 
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 public class MusicPagerAdapter extends FragmentPagerAdapter {
     @BindArray(R.array.music)
     String[] mTabName;
-    private int[] mFragmentType = {SubMusicFragment.TYPE_SINGLE, SubMusicFragment.TYPE_SINGER, SubMusicFragment.TYPE_ALBUM, SubMusicFragment.TYPE_FOLDER};
+    private int[] mFragmentType = {CONST.TYPE_SINGLE, CONST.TYPE_SINGER, CONST.TYPE_ALBUM, CONST.TYPE_FOLDER};
 
     public MusicPagerAdapter(View view, FragmentManager fm) {
         super(fm);

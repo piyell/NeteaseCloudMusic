@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.zsorg.neteasecloudmusic.models.DiskMusicModel;
+import com.zsorg.neteasecloudmusic.models.ScanMusicModel;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +23,7 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        new DiskMusicModel().scanMusicFile();
+        new ScanMusicModel().scanMusicFile();
 
         assertEquals("com.zsorg.neteasecloudmusic", appContext.getPackageName());
     }

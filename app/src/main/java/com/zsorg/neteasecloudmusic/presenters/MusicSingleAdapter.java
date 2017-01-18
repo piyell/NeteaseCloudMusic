@@ -10,6 +10,8 @@ import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.BaseHolder;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.views.viewholders.PlayAllHolder;
+import com.zsorg.neteasecloudmusic.views.viewholders.SongListItemHolder;
 
 import java.util.List;
 
@@ -27,12 +29,12 @@ public class MusicSingleAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getItemViewType(int position) {
+    public int getItemType(int position) {
         return position==0?TYPE_HEAD:TYPE_CONTENT;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseHolder onCreateHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_CONTENT) {
             return new SongListItemHolder(mInflater.inflate(R.layout.song_list_item, parent, false));
         } else {
@@ -72,7 +74,7 @@ public class MusicSingleAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getItemCount() {
-        return mList.size()>0?mList.size()+1:0;
+    public int getDataCount() {
+        return mList!=null && mList.size()>0?mList.size()+1:0;
     }
 }

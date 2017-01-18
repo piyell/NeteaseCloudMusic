@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic.presenters;
+package com.zsorg.neteasecloudmusic.views.viewholders;
 
 import android.view.View;
 import android.widget.TextView;
@@ -15,9 +15,9 @@ import butterknife.ButterKnife;
 
 public class SongListItemHolder extends BaseHolder {
     @BindView(R.id.tv_song_name)
-    TextView tvTitle;
+    public TextView tvTitle;
     @BindView(R.id.tv_songs_in_total)
-    TextView tvContent;
+    public TextView tvContent;
 
     public SongListItemHolder(View itemView) {
         super(itemView);

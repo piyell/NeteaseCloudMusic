@@ -30,5 +30,7 @@
     <string name="error_msg">错误:%s</string>
     <string name="scan_finish">扫描完成</string>
     <string name="unknown">未知</string>
+    <string name="songs_i_love">我喜欢的音乐</string>
+    <string name="all_playlist">全部歌单</string>
 
 </resources>

@@ -16,7 +16,7 @@ class MainAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return MusicFragment.newInstance(" "," ");
+        return position==0?MusicFragment.newInstance():PlayListFragment.newInstance();
     }
 
     @Override

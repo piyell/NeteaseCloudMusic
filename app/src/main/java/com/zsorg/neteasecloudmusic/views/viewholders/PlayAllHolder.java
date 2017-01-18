@@ -1,6 +1,5 @@
-package com.zsorg.neteasecloudmusic.presenters;
+package com.zsorg.neteasecloudmusic.views.viewholders;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,7 +15,7 @@ import butterknife.ButterKnife;
 
 public class PlayAllHolder extends BaseHolder {
     @BindView(R.id.tv_songs_in_total)
-    TextView tvCount;
+    public TextView tvCount;
 
     public PlayAllHolder(View view) {
         super(view);

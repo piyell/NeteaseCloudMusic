@@ -21,7 +21,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 
-public class DiskMusicModel implements IMusicModel {
+public class ScanMusicModel implements IMusicModel {
     @Override
     public Flowable<MusicBean> scanMusicFile() {
         return mScanMusicOnStorage(Environment.getExternalStorageDirectory())

@@ -4,9 +4,6 @@ import com.zsorg.neteasecloudmusic.CONST;
 import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
 import com.zsorg.neteasecloudmusic.views.ISubMusicView;
 
-import java.util.ArrayList;
-import java.util.Set;
-
 /**
  * Project:NeteaseCloudMusic
  *

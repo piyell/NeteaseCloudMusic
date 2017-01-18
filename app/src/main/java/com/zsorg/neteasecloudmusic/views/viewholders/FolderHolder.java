@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic.presenters;
+package com.zsorg.neteasecloudmusic.views.viewholders;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -16,15 +16,15 @@ import butterknife.ButterKnife;
 
 public class FolderHolder extends BaseHolder {
     @BindView(R.id.iv_folder)
-    ImageView ivFolder;
+    public ImageView ivFolder;
     @BindView(R.id.tv_folder_name)
-    TextView tvFolderName;
+    public TextView tvFolderName;
     @BindView(R.id.tv_songs_count)
-    TextView tvCount;
+    public TextView tvCount;
     @BindView(R.id.tv_folder_path)
-    TextView tvFolderPath;
+    public TextView tvFolderPath;
     @BindView(R.id.iv_right)
-    ImageView ivRight;
+    public ImageView ivRight;
     public FolderHolder(View view) {
         super(view);
 

@@ -33,4 +33,7 @@
     <dimen name="scan_btn_padding">8dp</dimen>
     <dimen name="scan_btn_radius">3dp</dimen>
     <dimen name="scan_tv_back_size">18sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="header_vertical_padding">12dp</dimen>
+    <dimen name="header_line_width">3dp</dimen>
 </resources>

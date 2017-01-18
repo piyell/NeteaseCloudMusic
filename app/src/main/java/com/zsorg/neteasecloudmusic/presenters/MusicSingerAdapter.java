@@ -1,16 +1,14 @@
 package com.zsorg.neteasecloudmusic.presenters;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.BaseAdapter;
-import com.zsorg.neteasecloudmusic.BaseHolder;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.views.viewholders.SingerHolder;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -36,7 +34,7 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
     }
 
     @Override
-    public SingerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SingerHolder onCreateHolder(ViewGroup parent, int viewType) {
         return new SingerHolder(mInflater.inflate(R.layout.singer_list_item, parent, false));
     }
 
@@ -47,7 +45,7 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
     }
 
     @Override
-    public int getItemCount() {
+    public int getDataCount() {
         return mList!=null?mList.size():0;
     }
 }

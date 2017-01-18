@@ -1,6 +1,5 @@
-package com.zsorg.neteasecloudmusic.presenters;
+package com.zsorg.neteasecloudmusic.views.viewholders;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,17 +14,16 @@ import butterknife.ButterKnife;
  * Created by piyel_000 on 2017/1/6.
  */
 
-public class AlbumHolder extends BaseHolder {
-    @BindView(R.id.iv_album)
-    ImageView ivAlbum;
+public class SingerHolder extends BaseHolder {
+    @BindView(R.id.iv_singer)
+    public ImageView iv;
     @BindView(R.id.tv_singer)
-    TextView tvSinger;
+    public TextView tvTitle;
     @BindView(R.id.tv_songs_in_total)
-    TextView tvCount;
+    public TextView tvContent;
     @BindView(R.id.iv_right)
-    ImageView ivRight;
-
-    public AlbumHolder(View view) {
+    public ImageView ivRight;
+    public SingerHolder(View view) {
         super(view);
 
         ButterKnife.bind(this, view);

@@ -1,8 +1,6 @@
 package com.zsorg.neteasecloudmusic.presenters;
 
-import android.util.Log;
-
-import com.zsorg.neteasecloudmusic.models.DiskMusicModel;
+import com.zsorg.neteasecloudmusic.models.ScanMusicModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
 import com.zsorg.neteasecloudmusic.views.IScanMusicView;
@@ -23,26 +21,26 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 public class ScanMusicPresenter {
 
     private final IScanMusicView iScanMusicView;
-    private final DiskMusicDao mDiskMusicDao;
+    private final DiskMusicDao mScanMusicDao;
 
     public ScanMusicPresenter(IScanMusicView scanMusicView) {
         iScanMusicView = scanMusicView;
-        mDiskMusicDao = new DiskMusicDao(scanMusicView.getContext());
+        mScanMusicDao = new DiskMusicDao(scanMusicView.getContext());
     }
 
     public void scanMusic() {
-        new DiskMusicModel().scanMusicFile().observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<MusicBean>() {
+        new ScanMusicModel().scanMusicFile().observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<MusicBean>() {
             @Override
             public void onSubscribe(Subscription s) {
                 iScanMusicView.startScan();
-                mDiskMusicDao.clearAll();
+                mScanMusicDao.clearAll();
                 s.request(Integer.MAX_VALUE);
 
             }
 
             @Override
             public void onNext(MusicBean musicBean) {
-                mDiskMusicDao.addMusic(musicBean);
+                mScanMusicDao.addMusic(musicBean);
             }
 
             @Override

@@ -3,6 +3,8 @@ package com.zsorg.neteasecloudmusic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.StyleRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
@@ -84,7 +85,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_scan) {
             startActivity(new Intent(this, ScanMusicActivity.class));
         } else if (id == R.id.nav_slideshow) {
+
 
         } else if (id == R.id.nav_manage) {
 

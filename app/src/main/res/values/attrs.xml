@@ -2,6 +2,7 @@
 <resources>
     <!--<attr name = "tabBackgroundPressed" format = "reference" />-->
     <attr name = "tabBackground" format = "reference" />
+    <attr name = "whiteRippleBackground" format = "color|reference" />
     <!--<declare-styleable name = "bottom_layout">-->
         <!--<attr name = "tabBackgroundPressed" format = "reference" />-->
         <!--<attr name = "tabBackground" format = "reference" />-->

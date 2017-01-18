@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.views.viewholders.SongListItemHolder;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class SearchAdapter extends BaseAdapter<SongListItemHolder> {
     }
 
     @Override
-    public SongListItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SongListItemHolder onCreateHolder(ViewGroup parent, int viewType) {
         return new SongListItemHolder(mInflater.inflate(R.layout.song_list_item,parent,false));
     }
 
@@ -29,14 +30,13 @@ public class SearchAdapter extends BaseAdapter<SongListItemHolder> {
 
     }
 
-
     @Override
     public void setDatas(List list) {
 
     }
 
     @Override
-    public int getItemCount() {
+    public int getDataCount() {
         return 5;
     }
 }

@@ -17,6 +17,7 @@
     <string name="cancel_scan">取消扫描</string>
     <string name="scan_finish">扫描完成</string>
     <string name="unknown">未知</string>
+    <string name="all_playlist">全部歌单</string>
 
     <string-array name="music">
         <item>@string/single</item>

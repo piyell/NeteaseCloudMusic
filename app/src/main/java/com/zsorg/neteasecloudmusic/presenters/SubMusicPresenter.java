@@ -1,6 +1,8 @@
 package com.zsorg.neteasecloudmusic.presenters;
 
 import com.zsorg.neteasecloudmusic.CONST;
+import com.zsorg.neteasecloudmusic.models.PlaylistModel;
+import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
 import com.zsorg.neteasecloudmusic.views.ISubMusicView;
 
@@ -38,5 +40,9 @@ public class SubMusicPresenter {
                 break;
         }
 
+    }
+
+    public int findPosition(MusicBean bean) {
+        return new PlaylistModel(mIView.getContext()).findPositionInPlaylist(CONST.TEMP_PLAYLIST_ID, bean.getPath());
     }
 }

@@ -40,9 +40,6 @@ import static com.zsorg.neteasecloudmusic.CONST.TYPE_SINGLE;
  * create an instance of this fragment.
  */
 public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemCLickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
 
     private int mMusicType;
 
@@ -53,6 +50,7 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
 
     @BindView(R.id.rv_sub_music)
     RecyclerView mRecyclerView;
+    private SubMusicPresenter mPresenter;
 
     public SubMusicFragment() {
         // Required empty public constructor
@@ -65,7 +63,6 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
      * @param musicType 加载单曲，歌手，专辑，或文件夹.
      * @return A new instance of fragment SubMusicFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static SubMusicFragment newInstance(int musicType) {
         SubMusicFragment fragment = new SubMusicFragment();
         Bundle args = new Bundle();
@@ -92,7 +89,7 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
         mRecyclerView.addItemDecoration(LineItemDecorator.getInstance());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        SubMusicPresenter subMusicPresenter = new SubMusicPresenter(this);
+        mPresenter = new SubMusicPresenter(this);
 
         switch (mMusicType) {
             case TYPE_SINGLE:
@@ -112,7 +109,7 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
 
         mAdapter.setOnItemClickListener(this);
 
-        subMusicPresenter.requestList(mMusicType);
+        mPresenter.requestList(mMusicType);
 
         return view;
     }
@@ -152,7 +149,9 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
             case TYPE_SINGLE:
                 if (position>0) {
                     Intent intent = new Intent(getActivity(), PlayerActivity.class);
-                    intent.putExtra(CONST.INTENT_PLAYER_EXTRA, mAdapter.getDataAtPosition(position-1));
+                    int listPosition = mPresenter.findPosition(mAdapter.getDataAtPosition(position - 1));
+                    intent.putExtra(CONST.INTENT_PLAYLIST_ID, CONST.TEMP_PLAYLIST_ID);
+                    intent.putExtra(CONST.INTENT_PLAYLIST_POSITION, listPosition);
                     startActivity(intent);
                 }
                 break;

@@ -1,10 +1,15 @@
 package com.zsorg.neteasecloudmusic.utils;
 
 import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+
+import static android.R.attr.duration;
 
 /**
  * Project:NeteaseCloudMusic
@@ -25,5 +30,13 @@ public class MP3Util {
         long duration = Long.valueOf(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
         mmr.release();
         return new MusicBean( name, singer, album,duration, path);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD_MR1)
+    public static Bitmap getAlbumArtFromMP3File(String path) {
+        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+        mmr.setDataSource(path);
+        byte[] bytes = mmr.getEmbeddedPicture();
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 }

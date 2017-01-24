@@ -1,5 +1,9 @@
 package com.zsorg.neteasecloudmusic.utils;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.provider.MediaStore;
+
 import java.io.File;
 
 /**
@@ -14,6 +18,20 @@ public class MusicUtil {
 
     public static boolean isMusic(File file) {
         return null!=file && file.getName().toLowerCase().endsWith(".mp3");
+    }
+
+    public static String getAlbumArt(Context mContext, String album_id) {
+        String[] projection = new String[]{MediaStore.Audio.Albums.ALBUM_ART};
+        Cursor cur = mContext.getContentResolver().query(
+                MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI,
+                projection, MediaStore.Audio.Albums._ID + "=?", new String[]{album_id}, null);
+        String album_art = null;
+        if (null!=cur && cur.moveToNext()) {
+            album_art = cur.getString(0);
+            cur.close();
+        }
+
+        return album_art;
     }
 
     public static String[] getParentAndFileName(String path) {

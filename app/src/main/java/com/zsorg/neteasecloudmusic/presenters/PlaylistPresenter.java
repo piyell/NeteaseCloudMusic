@@ -21,6 +21,6 @@ public class PlaylistPresenter {
     }
 
     public void requestList() {
-        iPlaylistView.showItems(new PlaylistModel(iPlaylistView.getContext()).loadPlaylist());
+        iPlaylistView.showItems(new PlaylistModel(iPlaylistView.getContext()).loadPlaylistList());
     }
 }

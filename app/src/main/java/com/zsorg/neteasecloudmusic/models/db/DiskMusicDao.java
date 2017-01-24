@@ -44,14 +44,20 @@ public class DiskMusicDao {
     }
 
     public void addMusic(String name, String singer, String album,long duration, String path) {
-        ContentValues values = new ContentValues();
-        values.put("name",name);
-        values.put("singer",singer);
-        values.put("album",album);
-        values.put("path",path);
-        values.put("parent",path.substring(0,path.lastIndexOf(File.separatorChar)));
-        values.put("duration",duration);
-        mDBHelper.getWritableDatabase().insert("diskMusic", null, values);
+//        ContentValues values = new ContentValues();
+//        values.put("name",name);
+//        values.put("singer",singer);
+//        values.put("album",album);
+//        values.put("path",path);
+//        values.put("parent",path.substring(0,path.lastIndexOf(File.separatorChar)));
+//        values.put("duration",duration);
+//        mDBHelper.getWritableDatabase().insert("diskMusic", null, values);
+        if (null == name) {
+            name = MusicUtil.getParentAndFileName(path)[1];
+        }
+        mDBHelper.getWritableDatabase().execSQL("insert into diskMusic(name,singer,album,path,parent,duration) values (?,?,?,?,?,?);", new String[]{
+                name, singer, album, path, path.substring(0, path.lastIndexOf(File.separatorChar)), String.valueOf(duration)
+        });
     }
 
     public List<MusicBean> queryAll() {

@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
  * Created by piyel_000 on 2017/1/6.
  */
 
-public class FolderHolder extends BaseHolder {
+public class FolderHolder extends BaseItemHolder {
     @BindView(R.id.iv_folder)
     public ImageView ivFolder;
     @BindView(R.id.tv_folder_name)
@@ -27,7 +27,6 @@ public class FolderHolder extends BaseHolder {
     public ImageView ivRight;
     public FolderHolder(View view) {
         super(view);
-
         ButterKnife.bind(this, view);
     }
 }

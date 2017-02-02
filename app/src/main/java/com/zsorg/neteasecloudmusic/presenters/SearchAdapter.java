@@ -8,6 +8,7 @@ import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.views.viewholders.SongListItemHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -5,7 +5,7 @@
     android:id="@+id/activity_player"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/play_bg_night"
+    android:background="@drawable/player_bg"
     android:fitsSystemWindows="false"
     tools:context="com.zsorg.neteasecloudmusic.PlayerActivity">
 
@@ -50,23 +50,25 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:layout_constraintVertical_bias="0.0">
 
-        <RelativeLayout
+        <android.support.percent.PercentRelativeLayout
             android:id="@+id/playLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true">
 
 
-            <ImageView
+            <com.zsorg.neteasecloudmusic.widgets.SquareImageView
+                android:id="@+id/disc_bg"
                 android:layout_width="@dimen/play_activity_disc"
                 android:layout_height="@dimen/play_activity_disc"
+                app:layout_widthPercent="75%"
                 android:layout_centerInParent="true"
                 android:src="@drawable/play_disc_halo" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/play_viewpager"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/play_activity_disc"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:overScrollMode="never" />
 
@@ -74,19 +76,28 @@
                 android:id="@+id/iv_needle"
                 android:layout_width="@dimen/needle_width"
                 android:layout_height="@dimen/needle_height"
-                android:layout_centerHorizontal="true"
+                app:layout_widthPercent="30%"
+                app:layout_heightPercent="39%"
+                app:layout_marginRightPercent="30%"
+                app:layout_marginEndPercent="30%"
+                android:rotation="-0"
+
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="@dimen/needle_margin_right"
-                android:layout_marginRight="@dimen/needle_margin_right"
                 android:layout_marginTop="@dimen/needle_margin_top"
-                android:rotation="-20"
-                android:scaleType="centerInside"
+                android:transformPivotX="18.1dp"
+                android:transformPivotY="21.1dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/needle"
-                android:transformPivotX="15.1dp"
-                android:transformPivotY="15.1dp"
                 tools:targetApi="honeycomb" />
 
+            <!--android:layout_marginEnd="@dimen/needle_margin_right"-->
+            <!--android:layout_marginRight="@dimen/needle_margin_right"-->
+
+
             <LinearLayout
+                android:layout_below="@id/disc_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -106,10 +117,10 @@
                     style="@style/PlayActivityButtonStyle"
                     android:layout_width="@dimen/play_activity_btn_size"
                     android:layout_height="@dimen/play_activity_btn_size"
-                    android:scaleType="center"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/menu_more" />
             </LinearLayout>
-        </RelativeLayout>
+        </android.support.percent.PercentRelativeLayout>
 
     </FrameLayout>
 
@@ -209,7 +220,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/iv_play_list"
+                android:id="@+id/iv_playlist"
                 style="@style/PlayActivityButtonWithoutMarginStyle"
                 android:layout_width="@dimen/play_activity_btn_big_size"
                 android:layout_height="@dimen/play_activity_btn_big_size"

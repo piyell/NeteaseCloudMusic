@@ -9,8 +9,8 @@
     <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
         android:name=".MusicApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -36,12 +36,15 @@
             android:theme="@style/AppTheme.Translucent" />
         <activity
             android:name=".ScanMusicActivity"
-            android:label="@string/title_activity_scan_music"
             android:theme="@style/AppTheme.Translucent" />
 
+        <activity
+            android:name=".MusicListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <service
-            android:name=".MusicPlayerService"
-            android:exported="false"></service>
+        android:name=".MusicPlayerService"
+        android:exported="false" />
     </application>
 
 </manifest>

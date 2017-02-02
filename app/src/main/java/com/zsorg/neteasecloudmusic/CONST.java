@@ -19,9 +19,10 @@ public class CONST {
     public static final String INTENT_PLAYLIST_ID = "INTENT_PLAYLIST_ID";
     public static final String INTENT_PLAYLIST_POSITION = "INTENT_PLAYLIST_POSITION";
 
-    public static final int DEFAULT_PLAYLIST_ID = 0;
+    public static final int DEFAULT_PLAYLIST_POSITION = 0;
     public static final int TEMP_PLAYLIST_ID = -1;
 
     public static final int IMAGE_LOADED = 1;
     public static final int IMAGE_REQUEST_LOADING = 2;
+    public static final int PLAYLIST_FAVORITE = 0;
 }

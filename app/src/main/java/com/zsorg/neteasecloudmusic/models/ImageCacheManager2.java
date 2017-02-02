@@ -90,7 +90,7 @@ public class ImageCacheManager2 implements Handler.Callback {
         return imageCacheManager;
     }
 
-    private Bitmap loadCachedBitmap(String mPath) {
+    public Bitmap loadCachedBitmap(String mPath) {
 //        if (null == mPath) {
 //            return null;
 //        }
@@ -221,7 +221,9 @@ public class ImageCacheManager2 implements Handler.Callback {
                                 }
                             }
                         });
-                        fstCacheMap.put(mPath, bitmap);
+                        if (bitmap!=null) {
+                            fstCacheMap.put(mPath, bitmap);
+                        }
                         return true;
                     }
                 }

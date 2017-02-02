@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 
-import java.io.BufferedReader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,15 +38,19 @@ public abstract class BaseAdapter<T extends BaseHolder> extends RecyclerView.Ada
 
     public abstract void onBindHolder(T holder, int position);
 
-    public abstract void setDatas(List<MusicBean> list);
-
     public abstract int getDataCount();
+
+    public void setDatas(List<MusicBean> list){}
 
     public int getItemType(int position){
         return super.getItemViewType(position);
     }
 
     public MusicBean getDataAtPosition(int position) {
+        return null;
+    }
+
+    public ArrayList<MusicBean> getDataList() {
         return null;
     }
 

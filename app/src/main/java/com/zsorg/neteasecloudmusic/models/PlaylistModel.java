@@ -86,6 +86,15 @@ public class PlaylistModel {
         db.close();
     }
 
+    public boolean isInPlaylist(int playlistID,String path) {
+        SQLiteDatabase db = mDBHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from playlist_detail where (list_id==?) and (path==?);", new String[]{String.valueOf(playlistID), path});
+        boolean value = cursor.moveToFirst();
+        cursor.close();
+        db.close();
+        return value;
+    }
+
     public List<MusicBean> loadPlaylistList() {
         SQLiteDatabase db = mDBHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("select playlist.[list_id],playlist.[name],playlist.[path],count(playlist_detail.[path]) from playlist left join playlist_detail on playlist_detail.[list_id]=playlist.[list_id] group by playlist.[list_id] order by playlist.[list_id] asc;",null);
@@ -97,7 +106,7 @@ public class PlaylistModel {
             String name = cursor.getString(1);
             String path = cursor.getString(2);
             String count = cursor.getString(3);
-            list.add(new MusicBean((listID!=0?name:songsILove), null, count, listID, path));
+            list.add(new MusicBean((listID!=CONST.PLAYLIST_FAVORITE?name:songsILove), null, count, listID, path));
         }
         if (cursor != null) {
             cursor.close();

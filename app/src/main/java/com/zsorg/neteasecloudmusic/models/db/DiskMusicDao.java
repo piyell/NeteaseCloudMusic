@@ -116,6 +116,58 @@ public class DiskMusicDao {
         return list;
     }
 
+    public List<MusicBean> querySingerMusicBeanList(String singer) {
+        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select * from diskMusic where singer"+(null==singer?" is null":"==?")+" order by singer desc;", null!=singer?new String[]{singer}:null);
+        List<MusicBean> list = new ArrayList<>();
+        while (null != cursor && cursor.moveToNext()) {
+            String name = cursor.getString(0);
+            String album = cursor.getString(2);
+            int duration = cursor.getInt(3);
+            String path = cursor.getString(4);
+
+            list.add(new MusicBean( name, singer, album,duration, path));
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return list;
+    }
+
+    public List<MusicBean> queryAlbumMusicBeanList(String album) {
+        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select * from diskMusic where album"+(null==album?" is null":"==?")+" order by album desc;", null!=album?new String[]{album}:null);
+        List<MusicBean> list = new ArrayList<>();
+        while (null != cursor && cursor.moveToNext()) {
+            String name = cursor.getString(0);
+            String singer = cursor.getString(1);
+            int duration = cursor.getInt(3);
+            String path = cursor.getString(4);
+
+            list.add(new MusicBean( name, singer, album,duration, path));
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return list;
+    }
+
+    public List<MusicBean> queryFolderMusicBeanList(String parent) {
+        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select * from diskMusic where parent"+(null==parent?" is null":"==?")+" order by parent desc;", null!=parent?new String[]{parent}:null);
+        List<MusicBean> list = new ArrayList<>();
+        while (null != cursor && cursor.moveToNext()) {
+            String name = cursor.getString(0);
+            String singer = cursor.getString(1);
+            String album = cursor.getString(2);
+            int duration = cursor.getInt(3);
+            String path = cursor.getString(4);
+
+            list.add(new MusicBean( name, singer, album,duration, path));
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return list;
+    }
+
     public Map<String,List<MusicBean>> queryAllSinger() {
         Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select name,singer,album,path,duration,count(path) from diskMusic group by singer order by singer desc;", null);
         HashMap<String, List<MusicBean>> musicMap = new HashMap<>();
@@ -181,7 +233,7 @@ public class DiskMusicDao {
     }
 
     public List<MusicBean> queryPathList() {
-        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select parent,path,count(parent) from diskMusic group by album order by parent desc;", null);
+        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select parent,path,count(parent) from diskMusic group by parent order by parent desc;", null);
         List<MusicBean> list = new ArrayList<>();
         while (null != cursor && cursor.moveToNext()) {
             String parent = cursor.getString(0);
@@ -195,4 +247,5 @@ public class DiskMusicDao {
         }
         return list;
     }
+
 }

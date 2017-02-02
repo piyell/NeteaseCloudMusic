@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
  * Created by piyel_000 on 2017/1/6.
  */
 
-public class SingerHolder extends BaseHolder {
+public class SingerHolder extends BaseItemHolder {
     @BindView(R.id.iv_singer)
     public ImageView iv;
     @BindView(R.id.tv_singer)
@@ -25,7 +25,6 @@ public class SingerHolder extends BaseHolder {
     public ImageView ivRight;
     public SingerHolder(View view) {
         super(view);
-
         ButterKnife.bind(this, view);
     }
 }

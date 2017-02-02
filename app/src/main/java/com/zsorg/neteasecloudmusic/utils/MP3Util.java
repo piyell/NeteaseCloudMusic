@@ -29,7 +29,7 @@ public class MP3Util {
         String album = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
         long duration = Long.valueOf(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
         mmr.release();
-        return new MusicBean( name, singer, album,duration, path);
+        return new MusicBean(name, singer, album, duration, path);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD_MR1)
@@ -37,6 +37,10 @@ public class MP3Util {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
         byte[] bytes = mmr.getEmbeddedPicture();
-        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        if (null != bytes) {
+            return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        } else {
+            return mmr.getFrameAtTime();
+        }
     }
 }

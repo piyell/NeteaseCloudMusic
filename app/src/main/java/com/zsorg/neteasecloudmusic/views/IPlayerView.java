@@ -19,4 +19,8 @@ public interface IPlayerView {
     Context getContext();
 
     void updateTrackInfo(int position);
+
+    void updatePlayButton(boolean isPlay);
+
+//    void updateDiscInfo(int position);
 }

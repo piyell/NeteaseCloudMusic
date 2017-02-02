@@ -8,11 +8,12 @@ import android.view.ViewGroup;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.viewholders.PlaylistHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlaylistAdapter extends BaseAdapter<PlaylistHolder> {
 
-    private List<MusicBean> mValues;
+    private ArrayList<MusicBean> mValues;
 
     public PlaylistAdapter(@NonNull LayoutInflater inflater) {
         super(inflater);
@@ -48,7 +49,17 @@ public class PlaylistAdapter extends BaseAdapter<PlaylistHolder> {
     @Override
     public void setDatas(List<MusicBean> list) {
 
-        mValues = list;
+        mValues = (ArrayList<MusicBean>) list;
+    }
+
+    @Override
+    public MusicBean getDataAtPosition(int position) {
+        return mValues!=null?mValues.get(position-1):null;
+    }
+
+    @Override
+    public ArrayList<MusicBean> getDataList() {
+        return mValues;
     }
 
     @Override

@@ -13,12 +13,14 @@ import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.presenters.PlaylistPresenter;
 import com.zsorg.neteasecloudmusic.views.IPlaylistView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class PlayListFragment extends Fragment implements IPlaylistView{
+public class PlayListFragment extends Fragment implements IPlaylistView, OnItemCLickListener {
 
     private PlaylistAdapter mAdapter;
+    private PlaylistPresenter mPresenter;
 
     public PlayListFragment() {
     }
@@ -46,9 +48,11 @@ public class PlayListFragment extends Fragment implements IPlaylistView{
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.addItemDecoration(LineItemDecorator.getInstance());
             mAdapter = new PlaylistAdapter(getActivity().getLayoutInflater());
+            mAdapter.setOnItemClickListener(this);
             mAdapter.addHeaderView(inflater.inflate(R.layout.play_list_header,null));
             recyclerView.setAdapter(mAdapter);
-            new PlaylistPresenter(this).requestList();
+            mPresenter = new PlaylistPresenter(this);
+            mPresenter.requestList();
         }
         return view;
     }
@@ -58,6 +62,14 @@ public class PlayListFragment extends Fragment implements IPlaylistView{
         if (null != mAdapter && null != list) {
             mAdapter.setDatas(list);
             mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        if (position>0) {
+            MusicBean bean = mAdapter.getDataAtPosition(position);
+            MusicListActivity.startMusicList(getContext(), bean.getName(),mPresenter.loadPlaylist((int) bean.getDuration()));
         }
     }
 }

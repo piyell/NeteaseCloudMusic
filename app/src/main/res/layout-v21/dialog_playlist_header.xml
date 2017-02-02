@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/bottom_sheet_vertical_padding"
+        android:paddingLeft="@dimen/bottom_sheet_horizontal_padding"
+        android:paddingRight="@dimen/bottom_sheet_horizontal_padding"
+        android:paddingTop="@dimen/bottom_sheet_vertical_padding">
+
+        <TextView
+            android:id="@+id/tv_clear"
+            style="@style/SingleLineTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:text="@string/clear" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/SingleLineTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/play_list_count"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/bottom_sheet_header_text_size" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/container"
+        android:background="@color/ltgray" />
+
+
+</LinearLayout>

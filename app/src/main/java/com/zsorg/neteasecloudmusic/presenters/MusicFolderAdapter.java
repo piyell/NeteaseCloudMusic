@@ -9,6 +9,7 @@ import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.viewholders.FolderHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,6 +43,7 @@ public class MusicFolderAdapter extends BaseAdapter<FolderHolder> {
         String path = bean.getAlbum() == null ? unknown : bean.getAlbum();
         String title = bean.getName() == null ? unknown : bean.getName();
 
+        holder.setTitle(title);
         holder.tvFolderName.setText(title);
         holder.tvCount.setText(count);
         holder.tvFolderPath.setText(path);
@@ -51,6 +53,11 @@ public class MusicFolderAdapter extends BaseAdapter<FolderHolder> {
     @Override
     public void setDatas(List list) {
         mList = list;
+    }
+
+    @Override
+    public MusicBean getDataAtPosition(int position) {
+        return mList.get(position);
     }
 
     @Override

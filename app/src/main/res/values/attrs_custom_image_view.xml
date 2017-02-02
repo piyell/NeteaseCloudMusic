@@ -1,0 +1,12 @@
+<resources>
+    <attr name="imageType">
+        <enum name="normal" value="0" />
+        <enum name="round" value="1" />
+        <enum name="circle" value="2" />
+    </attr>
+
+    <declare-styleable name="CustomImageView">
+        <attr name="imageType" />
+        <attr name="roundRadius" format="dimension" />
+    </declare-styleable>
+</resources>

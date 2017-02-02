@@ -19,7 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="fitStart"
-        android:foreground="@drawable/album_background"
+        android:background="@drawable/album_background"
         android:src="@drawable/album_blank" />
 
     <TextView

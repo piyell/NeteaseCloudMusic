@@ -5,18 +5,16 @@ import android.content.Intent;
 import android.content.Context;
 import android.content.ServiceConnection;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.PlaylistModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,16 +31,14 @@ public class MusicPlayerService extends IntentService {
     private static final String ACTION_STOP ="com.zsorg.neteasecloudmusic.action.STOP";
     private static final String ACTION_SET = "com.zsorg.neteasecloudmusic.action.SET";
 
-    private static final String EXTRA_PLAYLIST_ID = "com.zsorg.neteasecloudmusic.extra.PLAYLIST_ID";
+    private static final String EXTRA_PLAYLIST = "com.zsorg.neteasecloudmusic.extra.PLAYLIST_ID";
     private static final String EXTRA_IS_RESTART = "com.zsorg.neteasecloudmusic.extra.IS_RESTART";
     private static final String EXTRA_PLAYLIST_POSITION = "com.zsorg.neteasecloudmusic.extra.PLAYLIST_POSITION";
 
 
     private final MusicPlayerBinder mBinder;
 
-    private int mCurrentPlaylistID;
     private List<MusicBean> mCurrentPlaylist;
-    private MediaPlayer mPlayer;
 
     public MusicPlayerService() {
         super("MyIntentService");
@@ -79,10 +75,10 @@ public class MusicPlayerService extends IntentService {
         context.startService(intent);
     }
 
-    public static void startActionSet(Context context, int playlistID, int position) {
+    public static void startActionSet(Context context, ArrayList<MusicBean> playlist, int position) {
         Intent intent = new Intent(context, MusicPlayerService.class);
         intent.setAction(ACTION_SET);
-        intent.putExtra(EXTRA_PLAYLIST_ID, playlistID);
+        intent.putParcelableArrayListExtra(EXTRA_PLAYLIST, playlist);
         intent.putExtra(EXTRA_PLAYLIST_POSITION, position);
         context.startService(intent);
     }
@@ -116,9 +112,12 @@ public class MusicPlayerService extends IntentService {
             } else if (ACTION_PAUSE.equals(action)) {
                 handleActionPause();
             }else if (ACTION_SET.equals(action)) {
-                final int playlistID = intent.getIntExtra(EXTRA_PLAYLIST_ID, CONST.DEFAULT_PLAYLIST_ID);
-                final int position = intent.getIntExtra(EXTRA_PLAYLIST_POSITION, 0);
-                handleActionSetPlaylist(playlistID,position);
+                ArrayList<MusicBean> list = intent.getParcelableArrayListExtra(EXTRA_PLAYLIST);
+                if (null != list) {
+                    mCurrentPlaylist = list;
+                }
+                final int position = intent.getIntExtra(EXTRA_PLAYLIST_POSITION,CONST.DEFAULT_PLAYLIST_POSITION);
+                handleActionSetPlaylist(position);
             }
         }
     }
@@ -142,14 +141,10 @@ public class MusicPlayerService extends IntentService {
         }
     }
 
-    private void handleActionSetPlaylist(int playlistID, int position) {
+    private void handleActionSetPlaylist(int position) {
         PlayerManager playerManager = PlayerManager.getInstance(this);
-        if (mCurrentPlaylistID != playlistID || mCurrentPlaylist == null) {
-            mCurrentPlaylistID = playlistID;
-            mCurrentPlaylist = new PlaylistModel(this).loadPlaylist(playlistID);
-
-            playerManager.setPlaylistBean(mCurrentPlaylist);
-
+        if (mCurrentPlaylist != null) {
+            playerManager.setCurrentPlaylist(mCurrentPlaylist);
         }
         playerManager.setCurrentPosition(position);
     }

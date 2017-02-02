@@ -1,11 +1,8 @@
 <resources>
-    <string name="app_name">Netease Cloud Music</string>
+    <string name="app_name">Spider Net Music</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="singer">歌手</string>
     <string name="album">专辑</string>
@@ -22,7 +19,6 @@
         <item>@string/album</item>
         <item>@string/folder</item>
     </string-array>
-    <string name="title_activity_scan_music">ScanMusicActivity</string>
     <string name="scanning_percent">正在扫描...%s</string>
     <string name="back_to_music">回到我的音乐</string>
     <string name="scan_immediately">立即扫描</string>
@@ -32,5 +28,14 @@
     <string name="unknown">未知</string>
     <string name="songs_i_love">我喜欢的音乐</string>
     <string name="all_playlist">全部歌单</string>
+    <string name="clear">清空</string>
+    <string name="play_list_count">播放列表（%s）</string>
+    <string name="confirm_to_clear_playlist">确认要清空播放列表？</string>
+    <string name="cancel">取消</string>
+    <string name="play_at_next">下一首播放</string>
+    <string name="collect_to_playlist">收藏到歌单</string>
+    <string name="delete">删除</string>
+    <string name="share">分享</string>
+    <string name="watch_music_info">查看歌曲信息</string>
 
 </resources>

@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
  * Created by piyel_000 on 2017/1/6.
  */
 
-public class AlbumHolder extends BaseHolder {
+public class AlbumHolder extends BaseItemHolder {
     @BindView(R.id.iv_album)
     public ImageView ivAlbum;
     @BindView(R.id.tv_singer)

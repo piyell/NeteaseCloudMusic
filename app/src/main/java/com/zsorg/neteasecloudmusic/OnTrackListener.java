@@ -1,5 +1,7 @@
 package com.zsorg.neteasecloudmusic;
 
+import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+
 /**
  * Project:NeteaseCloudMusic
  *
@@ -10,4 +12,8 @@ package com.zsorg.neteasecloudmusic;
 
 public interface OnTrackListener {
     void onTrack(int position);
+
+    void onNext(MusicBean bean);
+
+    void onPlayStateChange(boolean isPlay);
 }

@@ -2,6 +2,7 @@ package com.zsorg.neteasecloudmusic.presenters;
 
 import android.content.Intent;
 
+import com.zsorg.neteasecloudmusic.CONST;
 import com.zsorg.neteasecloudmusic.MusicPlayerService;
 import com.zsorg.neteasecloudmusic.OnTrackListener;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
@@ -10,6 +11,7 @@ import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
 import com.zsorg.neteasecloudmusic.views.IPlaylistView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,16 +39,23 @@ public class PlayerPresenter implements OnTrackListener {
         MusicPlayerService.startActionPause(iPlayerView.getContext());
     }
 
-    public void requestMusicInfo(int id, int position) {
-        List<MusicBean> list = new PlaylistModel(iPlayerView.getContext()).loadPlaylist(id);
-        if (position < list.size()) {
-            iPlayerView.displayMusicInfo(list.get(position));
-        }
+    public void requestMusicInfo() {
+//        List<MusicBean> list = new PlaylistModel(iPlayerView.getContext()).loadPlaylist(id);
+
+        MusicBean musicBean = PlayerManager.getInstance(iPlayerView.getContext()).getMusicBean();
+        iPlayerView.displayMusicInfo(musicBean);
     }
 
-    public void setPlaylist(int id, int position) {
-        MusicPlayerService.startActionSet(iPlayerView.getContext(),id,position);
+    public void setPlaylist(ArrayList<MusicBean> list, int position) {
+        MusicPlayerService.startActionSet(iPlayerView.getContext(),list,position);
+    }
+
+    public void syncPlayerInfo() {
         PlayerManager.getInstance(iPlayerView.getContext()).setOnTrackListener(this);
+    }
+
+    public void unSyncPlayerInfo() {
+        PlayerManager.getInstance(iPlayerView.getContext()).setOnTrackListener(null);
     }
 
     @Override
@@ -54,5 +63,39 @@ public class PlayerPresenter implements OnTrackListener {
         if (null != iPlayerView) {
             iPlayerView.updateTrackInfo(position);
         }
+    }
+
+    @Override
+    public void onNext(MusicBean bean) {
+        if (null != iPlayerView) {
+            iPlayerView.displayMusicInfo(bean);
+        }
+    }
+
+    @Override
+    public void onPlayStateChange(boolean isPlay) {
+        if (null != iPlayerView) {
+            iPlayerView.updatePlayButton(isPlay);
+        }
+    }
+
+    public void nextMusic() {
+        PlayerManager.getInstance(iPlayerView.getContext()).nextMusic();
+    }
+
+    public void preMusic() {
+        PlayerManager.getInstance(iPlayerView.getContext()).preMusic();
+    }
+
+    public boolean isAddedToFavorite() {
+        return new PlaylistModel(iPlayerView.getContext()).isInPlaylist(CONST.PLAYLIST_FAVORITE,PlayerManager.getInstance(iPlayerView.getContext()).getMusicBean().getPath());
+    }
+
+    public void addToFavorite() {
+        new PlaylistModel(iPlayerView.getContext()).addToPlaylist(CONST.PLAYLIST_FAVORITE,PlayerManager.getInstance(iPlayerView.getContext()).getMusicBean().getPath());
+    }
+
+    public void cancelFavorite() {
+        new PlaylistModel(iPlayerView.getContext()).deleteFromPlaylist(CONST.PLAYLIST_FAVORITE,PlayerManager.getInstance(iPlayerView.getContext()).getMusicBean().getPath());
     }
 }

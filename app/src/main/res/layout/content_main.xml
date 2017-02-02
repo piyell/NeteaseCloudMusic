@@ -31,99 +31,11 @@
         app:layout_constraintRight_toRightOf="@+id/content_main"
         app:layout_constraintTop_toTopOf="@+id/content_main" />
 
-    <LinearLayout
-        android:id="@+id/bottomLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:background="?attr/whiteRippleBackground"
-        android:clickable="true"
-        android:orientation="vertical"
+    <include
         app:layout_constraintBottom_toBottomOf="@+id/content_main"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/content_main"
         app:layout_constraintRight_toRightOf="@+id/content_main"
-        android:layout_marginBottom="-1dp">
-
-        <RelativeLayout
-            style="@style/SingleLineTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/bottom_layout_padding"
-            android:paddingLeft="@dimen/bottom_layout_padding"
-            android:paddingRight="@dimen/bottom_layout_padding">
-
-            <ImageView
-                android:id="@+id/iv_album"
-                android:layout_width="@dimen/bottom_iv_size"
-                android:layout_height="@dimen/bottom_iv_size"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginEnd="@dimen/bottom_layout_padding"
-                android:layout_marginStart="@dimen/bottom_layout_padding"
-                android:scaleType="centerInside"
-                android:src="@drawable/album_blank" />
-
-            <TextView
-                android:id="@+id/tv_song_name"
-                style="@style/SingleLineTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/iv_album"
-                android:layout_margin="@dimen/bottom_tv_margin"
-                android:layout_toEndOf="@id/iv_album"
-                android:layout_toRightOf="@id/iv_album"
-                tools:text="三个和尚"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="@dimen/bottom_tv_title_size" />
-
-            <TextView
-                android:id="@+id/tv_songs_in_total"
-                style="@style/SingleLineTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/iv_album"
-                android:layout_margin="@dimen/bottom_tv_margin"
-                android:layout_toEndOf="@id/iv_album"
-                android:layout_toRightOf="@id/iv_album"
-                tools:text="儿童歌曲"
-                android:textSize="@dimen/bottom_tv_small_size" />
-
-            <ImageView
-                android:id="@+id/iv_next"
-                style="@style/PlayBarButtonStyle"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/bottom_iv_next" />
-
-            <ImageView
-                android:id="@+id/iv_play"
-                style="@style/PlayBarButtonStyle"
-                android:layout_width="@dimen/bottom_iv_play_size"
-                android:layout_height="@dimen/bottom_iv_play_size"
-                android:layout_toLeftOf="@id/iv_next"
-                android:layout_toStartOf="@id/iv_next"
-                android:src="@drawable/playbar_btn_play" />
-
-            <ImageView
-                android:id="@+id/iv_list"
-                style="@style/PlayBarButtonStyle"
-                android:layout_toLeftOf="@id/iv_play"
-                android:layout_toStartOf="@id/iv_play"
-                android:src="@drawable/playbar_btn_playlist" />
-
-
-        </RelativeLayout>
-
-        <ProgressBar
-            android:id="@+id/pb_progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/progress_bar_height"
-            android:layout_marginBottom="@dimen/progress_bar_margin"
-            android:indeterminate="false"
-            android:max="100"
-            android:progress="50" />
-    </LinearLayout>
+        layout="@layout/bottom_play_layout" />
 
 </android.support.constraint.ConstraintLayout>

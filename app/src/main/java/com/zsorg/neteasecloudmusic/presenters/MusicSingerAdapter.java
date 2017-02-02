@@ -6,9 +6,11 @@ import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.viewholders.SingerHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +29,9 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
     public void onBindHolder(SingerHolder holder, int position) {
         MusicBean bean = mList.get(position);
         Context context = holder.tvTitle.getContext();
+        ImageCacheManager2.getInstance(context).displayImage(holder.iv,bean.getPath());
         String singer = bean.getSinger() == null ? context.getString(R.string.unknown) : bean.getSinger();
+        holder.setTitle(singer);
         holder.tvTitle.setText(singer);
         holder.tvContent.setText(context.getString(R.string.songs_count, String.valueOf(bean.getDuration())));
 
@@ -42,6 +46,11 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
     @Override
     public void setDatas(List list) {
         mList = list;
+    }
+
+    @Override
+    public MusicBean getDataAtPosition(int position) {
+        return mList.get(position);
     }
 
     @Override

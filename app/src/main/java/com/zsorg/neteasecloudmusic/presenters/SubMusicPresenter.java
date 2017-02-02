@@ -6,6 +6,8 @@ import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
 import com.zsorg.neteasecloudmusic.views.ISubMusicView;
 
+import java.util.List;
+
 /**
  * Project:NeteaseCloudMusic
  *
@@ -18,6 +20,7 @@ public class SubMusicPresenter {
 
     private final ISubMusicView mIView;
     private final DiskMusicDao musicDao;
+    private int mMusicType;
 
     public SubMusicPresenter(ISubMusicView view) {
         mIView = view;
@@ -25,6 +28,7 @@ public class SubMusicPresenter {
     }
 
     public void requestList(int mMusicType) {
+        this.mMusicType = mMusicType;
         switch (mMusicType) {
             case CONST.TYPE_SINGLE:
                 mIView.showItems(musicDao.queryAll());
@@ -42,7 +46,21 @@ public class SubMusicPresenter {
 
     }
 
+
+    public List<MusicBean> getMusicBeanList(String key) {
+        switch (mMusicType) {
+            case CONST.TYPE_SINGER:
+                return musicDao.querySingerMusicBeanList(key);
+            case CONST.TYPE_ALBUM:
+                return musicDao.queryAlbumMusicBeanList(key);
+            case CONST.TYPE_FOLDER:
+                return musicDao.queryFolderMusicBeanList(key);
+        }
+        return null;
+    }
+
     public int findPosition(MusicBean bean) {
         return new PlaylistModel(mIView.getContext()).findPositionInPlaylist(CONST.TEMP_PLAYLIST_ID, bean.getPath());
     }
+
 }

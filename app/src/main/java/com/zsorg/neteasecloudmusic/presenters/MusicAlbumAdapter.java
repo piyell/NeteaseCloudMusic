@@ -6,9 +6,12 @@ import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
+import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.viewholders.AlbumHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,25 +34,33 @@ public class MusicAlbumAdapter extends BaseAdapter<AlbumHolder> {
         Context context = holder.tvSinger.getContext();
 
         String unknown = "未知";
-        String count = "首 ";
+        String subTitle = "首 ";
+
         if (null != context) {
+            ImageCacheManager2.getInstance(context).displayImage(holder.ivAlbum,bean.getPath());
             unknown = context.getString(R.string.unknown);
-            count = context.getString(R.string.songs_count, String.valueOf(bean.getDuration()))+bean.getSinger();
+            subTitle = context.getString(R.string.songs_count, String.valueOf(bean.getDuration()))+(bean.getSinger()==null?unknown:bean.getSinger());
         } else {
-            count = bean.getDuration() + count+bean.getSinger();
+            subTitle = bean.getDuration() + subTitle+bean.getSinger();
         }
 
         String title = bean.getAlbum() == null ? unknown : bean.getAlbum();
 
 
 
+        holder.setTitle(title);
         holder.tvSinger.setText(title);
-        holder.tvCount.setText(count);
+        holder.tvCount.setText(subTitle);
     }
 
     @Override
-    public void setDatas(List list) {
+    public void setDatas(List<MusicBean> list) {
         mList = list;
+    }
+
+    @Override
+    public MusicBean getDataAtPosition(int position) {
+        return mList.get(position);
     }
 
     @Override

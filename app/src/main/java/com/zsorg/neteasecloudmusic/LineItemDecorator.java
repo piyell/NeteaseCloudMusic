@@ -108,6 +108,8 @@ public class LineItemDecorator extends RecyclerView.ItemDecoration {
             int left = child.getRight()+params.rightMargin;
             int right = left + 1;
             c.drawRect(left, top, right, bottom, paint);
+
         }
     }
+
 }

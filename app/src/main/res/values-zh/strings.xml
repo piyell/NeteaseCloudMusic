@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">网易云音乐</string>
+    <string name="app_name">蜘蛛网音乐</string>
 
     <string name="navigation_drawer_open">打开侧边栏</string>
     <string name="navigation_drawer_close">关闭侧边栏</string>
+
+
+    <string name="songs_count">%s首&#160;</string>
+    <string name="scan_local_music">扫描本地音乐</string>
 
 
     <string name="singer">歌手</string>
@@ -25,5 +29,12 @@
         <item>@string/album</item>
         <item>@string/folder</item>
     </string-array>
+
+    <string name="error_msg">错误:%s</string>
+    <string name="songs_i_love">我喜欢的音乐</string>
+    <string name="clear">清空</string>
+    <string name="play_list_count">播放列表（%s）</string>
+    <string name="confirm_to_clear_playlist">确认要清空播放列表？</string>
+    <string name="cancel">取消</string>
 
 </resources>

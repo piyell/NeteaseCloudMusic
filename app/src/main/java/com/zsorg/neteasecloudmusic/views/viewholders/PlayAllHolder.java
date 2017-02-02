@@ -13,13 +13,13 @@ import butterknife.ButterKnife;
  * Created by piyel_000 on 2017/1/5.
  */
 
-public class PlayAllHolder extends BaseHolder {
+public class PlayAllHolder extends BaseItemHolder {
     @BindView(R.id.tv_songs_in_total)
     public TextView tvCount;
 
     public PlayAllHolder(View view) {
         super(view);
-
         ButterKnife.bind(this, view);
+
     }
 }

@@ -1,7 +1,6 @@
 package com.zsorg.neteasecloudmusic;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +18,7 @@ import com.zsorg.neteasecloudmusic.presenters.MusicSingleAdapter;
 import com.zsorg.neteasecloudmusic.presenters.SubMusicPresenter;
 import com.zsorg.neteasecloudmusic.views.ISubMusicView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -145,21 +145,29 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
 
     @Override
     public void onItemClick(View view, int position) {
+        ArrayList<MusicBean> list;
         switch (mMusicType) {
             case TYPE_SINGLE:
-                if (position>0) {
-                    Intent intent = new Intent(getActivity(), PlayerActivity.class);
-                    int listPosition = mPresenter.findPosition(mAdapter.getDataAtPosition(position - 1));
-                    intent.putExtra(CONST.INTENT_PLAYLIST_ID, CONST.TEMP_PLAYLIST_ID);
-                    intent.putExtra(CONST.INTENT_PLAYLIST_POSITION, listPosition);
-                    startActivity(intent);
+                if (position>=0) {
+                    MusicPlayerService.startActionSet(getContext(),mAdapter.getDataList(),position>0?position-1:0);
+                    MusicPlayerService.startActionPlay(getContext(),true);
                 }
                 break;
             case TYPE_SINGER:
+                String singer = mAdapter.getDataAtPosition(position).getSinger();
+                list = (ArrayList<MusicBean>) mPresenter.getMusicBeanList(singer);
+                MusicListActivity.startMusicList(getContext(),singer,list);
                 break;
             case TYPE_ALBUM:
+                String album = mAdapter.getDataAtPosition(position).getAlbum();
+                list = (ArrayList<MusicBean>) mPresenter.getMusicBeanList(album);
+                MusicListActivity.startMusicList(getContext(),album,list);
                 break;
             case TYPE_FOLDER:
+                MusicBean bean = mAdapter.getDataAtPosition(position);
+                String folder = bean.getName();
+                list = (ArrayList<MusicBean>) mPresenter.getMusicBeanList(bean.getSinger());
+                MusicListActivity.startMusicList(getContext(),bean.getName(),list);
                 break;
         }
     }

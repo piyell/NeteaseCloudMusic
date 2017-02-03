@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.models.GroupSongMenuModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.viewholders.FolderHolder;
 
@@ -62,7 +63,9 @@ public class MusicFolderAdapter extends BaseAdapter<FolderHolder> {
 
     @Override
     public FolderHolder onCreateHolder(ViewGroup parent, int viewType) {
-        return new FolderHolder(mInflater.inflate(R.layout.folder_list_item, parent, false));
+        FolderHolder holder = new FolderHolder(mInflater.inflate(R.layout.folder_list_item, parent, false));
+        holder.setMenuList(GroupSongMenuModel.getInstance(parent.getContext()).getMenuList());
+        return holder;
     }
 
     @Override

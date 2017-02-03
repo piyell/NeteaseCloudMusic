@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.models.GroupSongMenuModel;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.viewholders.SingerHolder;
@@ -39,7 +40,9 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
 
     @Override
     public SingerHolder onCreateHolder(ViewGroup parent, int viewType) {
-        return new SingerHolder(mInflater.inflate(R.layout.singer_list_item, parent, false));
+        SingerHolder holder = new SingerHolder(mInflater.inflate(R.layout.singer_list_item, parent, false));
+        holder.setMenuList(GroupSongMenuModel.getInstance(parent.getContext()).getMenuList());
+        return holder;
     }
 
 

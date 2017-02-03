@@ -40,7 +40,7 @@ class DiscPageChanger implements ViewPager.OnPageChangeListener, Animator.Animat
         mNeedle = needle;
 
         mAnimator = ObjectAnimator.ofFloat(needle, "rotation", START_VALUE, END_VALUE);
-        mAnimator.setDuration(100);
+        mAnimator.setDuration(200);
         mAnimator.setInterpolator(new LinearInterpolator());
         mAnimator.addListener(this);
 

@@ -9,5 +9,5 @@ package com.zsorg.neteasecloudmusic;
  */
 
 public interface OnMenuItemClickListener {
-    void onMenuItemClick(int position);
+    void onMenuItemClick(int menuPosition);
 }

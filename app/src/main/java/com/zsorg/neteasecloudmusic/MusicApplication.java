@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.support.v7.app.AppCompatDelegate;
 
 /**
  * Project:NeteaseCloudMusic
@@ -17,6 +18,7 @@ public class MusicApplication extends Application implements ServiceConnection {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         MusicPlayerService.startService(this,this);
     }
 

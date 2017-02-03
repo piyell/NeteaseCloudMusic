@@ -36,5 +36,6 @@
     <string name="play_list_count">播放列表（%s）</string>
     <string name="confirm_to_clear_playlist">确认要清空播放列表？</string>
     <string name="cancel">取消</string>
+    <string name="confirm_to_remove_music">确定将所选音乐从本地列表中移除吗?</string>
 
 </resources>

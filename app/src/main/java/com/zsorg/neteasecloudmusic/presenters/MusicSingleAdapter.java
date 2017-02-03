@@ -11,7 +11,7 @@ import com.zsorg.neteasecloudmusic.MusicPlayerService;
 import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
-import com.zsorg.neteasecloudmusic.models.SingleSongModel;
+import com.zsorg.neteasecloudmusic.models.SingleSongMenuModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.viewholders.PlayAllHolder;
 import com.zsorg.neteasecloudmusic.views.viewholders.SongListItemHolder;
@@ -44,7 +44,7 @@ public class MusicSingleAdapter extends BaseAdapter {
     public BaseHolder onCreateHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_CONTENT) {
             SongListItemHolder holder = new SongListItemHolder(mInflater.inflate(R.layout.song_list_item, parent, false));
-            holder.setMenuList(SingleSongModel.getInstance(parent.getContext()).getMenuList());
+            holder.setMenuList(SingleSongMenuModel.getInstance(parent.getContext()).getMenuList());
             return holder;
         } else {
             return new PlayAllHolder(mInflater.inflate(R.layout.play_all_layout, parent, false));

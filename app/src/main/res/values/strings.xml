@@ -37,5 +37,13 @@
     <string name="delete">删除</string>
     <string name="share">分享</string>
     <string name="watch_music_info">查看歌曲信息</string>
+    <string name="play">播放</string>
+    <string name="confirm_to_remove_music">确定将所选音乐从本地列表中移除吗?</string>
+    <string name="delete_on_disk">同时删除本地文件</string>
+
+    <string-array name="delete_on_disk_choice">
+        <item>@string/delete_on_disk</item>
+    </string-array>
+
 
 </resources>

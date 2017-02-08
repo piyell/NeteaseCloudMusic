@@ -28,7 +28,6 @@ import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.presenters.PlayerPresenter;
 import com.zsorg.neteasecloudmusic.presenters.SearchAdapter;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
-import com.zsorg.neteasecloudmusic.widgets.BaseBottomSheetDialog;
 import com.zsorg.neteasecloudmusic.widgets.PlaylistDialog;
 
 import butterknife.BindView;

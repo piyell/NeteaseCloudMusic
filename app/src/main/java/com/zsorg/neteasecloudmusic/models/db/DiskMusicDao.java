@@ -168,28 +168,21 @@ public class DiskMusicDao {
         return list;
     }
 
-    public Map<String,List<MusicBean>> queryAllSinger() {
-        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select name,singer,album,path,duration,count(path) from diskMusic group by singer order by singer desc;", null);
-        HashMap<String, List<MusicBean>> musicMap = new HashMap<>();
-        while (null != cursor && cursor.moveToNext()) {
-            String name = cursor.getString(0);
-            String singer = cursor.getString(1);
-            String album = cursor.getString(2);
-            String path = cursor.getString(3);
-            long duration = cursor.getLong(4);
-            int count = cursor.getInt(5);
-            List<MusicBean> list = musicMap.get(name);
-            if (null == list) {
-                list = new ArrayList<>();
-                musicMap.put(name, list);
-            }
+    public void deleteSingleSong(String path) {
+        mDBHelper.getWritableDatabase().execSQL("delete from diskMusic where path==\"" + path.replace("\"", "\\\"") + "\"");
+        mDBHelper.getWritableDatabase().execSQL("delete from playlist_detail where path==\"" + path.replace("\"", "\\\"") + "\"");
+    }
 
-            list.add(new MusicBean( name, singer, album,duration, path));
-        }
-        if (cursor != null) {
-            cursor.close();
-        }
-        return musicMap;
+    public void deleteFolderMusicList(String parent) {
+        mDBHelper.getWritableDatabase().execSQL("delete from diskMusic where parent"+(null==parent?" is null":"==\""+parent.replace("\"", "\\\"")+"\";"));
+    }
+
+    public void deleteAlbumMusicList(String album) {
+        mDBHelper.getWritableDatabase().execSQL("delete from diskMusic where album"+(null==album?" is null":"==\""+album.replace("\"", "\\\"")+"\";"));
+    }
+
+    public void deleteSingerMusicList(String singer) {
+        mDBHelper.getWritableDatabase().execSQL("delete from diskMusic where singer"+(null==singer?" is null":"==\""+singer.replace("\"", "\\\"")+"\";"));
     }
 
     public List<MusicBean> queryAlbumList() {
@@ -206,30 +199,6 @@ public class DiskMusicDao {
             cursor.close();
         }
         return list;
-    }
-
-    public Map<String,List<MusicBean>> queryAllAlbum() {
-        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select name,singer,album,path,duration,count(path) from diskMusic group by album order by album desc;", null);
-        HashMap<String, List<MusicBean>> musicMap = new HashMap<>();
-        while (null != cursor && cursor.moveToNext()) {
-            String name = cursor.getString(0);
-            String singer = cursor.getString(1);
-            String album = cursor.getString(2);
-            String path = cursor.getString(3);
-            long duration = cursor.getLong(4);
-            int count = cursor.getInt(5);
-            List<MusicBean> list = musicMap.get(name);
-            if (null == list) {
-                list = new ArrayList<>();
-                musicMap.put(name, list);
-            }
-
-            list.add(new MusicBean(name, singer, album,duration, path));
-        }
-        if (cursor != null) {
-            cursor.close();
-        }
-        return musicMap;
     }
 
     public List<MusicBean> queryPathList() {

@@ -40,6 +40,10 @@
     <string name="play">播放</string>
     <string name="confirm_to_remove_music">确定将所选音乐从本地列表中移除吗?</string>
     <string name="delete_on_disk">同时删除本地文件</string>
+    <string name="share_to">分享到</string>
+    <string name="new_playlist">新建歌单</string>
+    <string name="input_playlist_title">请输入歌单标题</string>
+    <string name="submit">提交</string>
 
     <string-array name="delete_on_disk_choice">
         <item>@string/delete_on_disk</item>

@@ -50,6 +50,22 @@ public class PlaylistModel {
         db.close();
     }
 
+    public int newPlaylist(String name) {
+        SQLiteDatabase db = mDBHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        db.insert("playlist", null, values);
+
+        Cursor cursor = db.rawQuery("select list_id from playlist where rowid==last_insert_rowid();", null);
+        int listID=-2;
+        if (cursor.moveToFirst()) {
+            listID = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return listID;
+    }
+
     public int findPositionInPlaylist(int playlistID, String path) {
         SQLiteDatabase db = mDBHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from playlist_detail where list_id==?  order by playlist_detail.[path] desc;", new String[]{String.valueOf(playlistID)});
@@ -137,5 +153,12 @@ public class PlaylistModel {
         db.close();
 
         return list;
+    }
+
+    public void deletePlaylist(int playlistID) {
+        SQLiteDatabase db = mDBHelper.getWritableDatabase();
+        db.delete("playlist_detail", "(list_id==?)", new String[]{String.valueOf(playlistID)});
+        db.delete("playlist", "(list_id==?)", new String[]{String.valueOf(playlistID)});
+        db.close();
     }
 }

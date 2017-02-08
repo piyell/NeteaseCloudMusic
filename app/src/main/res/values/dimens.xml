@@ -44,4 +44,5 @@
     <dimen name="bottom_sheet_item_text_size">15sp</dimen>
     <dimen name="bottom_sheet_item_subtext_size">12sp</dimen>
     <dimen name="menu_icon_size">25dp</dimen>
+    <dimen name="dialog_padding">8dp</dimen>
 </resources>

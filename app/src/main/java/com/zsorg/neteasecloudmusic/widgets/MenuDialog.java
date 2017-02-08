@@ -1,9 +1,14 @@
 package com.zsorg.neteasecloudmusic.widgets;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.graphics.BitmapCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,7 +124,9 @@ public class MenuDialog extends BaseBottomSheetDialog implements OnItemCLickList
             MenuBean bean = mMenuList.get(position);
             holder.tvName.setText(bean.getName());
             if (bean.getIconID() > 0) {
-                holder.ivIcon.setImageDrawable(VectorDrawableCompat.create(getContext().getResources(), bean.getIconID(), null));
+                Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), bean.getIconID());
+//                holder.ivIcon.setImageDrawable(VectorDrawableCompat.create(getContext().getResources(), bean.getIconID(), null));
+                holder.ivIcon.setImageDrawable(new BitmapDrawable(bitmap));
             }
         }
 

@@ -1,6 +1,8 @@
 package com.zsorg.neteasecloudmusic.presenters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,14 +10,19 @@ import android.view.ViewGroup;
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.BaseHolder;
 import com.zsorg.neteasecloudmusic.MusicPlayerService;
+import com.zsorg.neteasecloudmusic.OnDeleteListener;
 import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
+import com.zsorg.neteasecloudmusic.models.PlaylistModel;
 import com.zsorg.neteasecloudmusic.models.SingleSongMenuModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
+import com.zsorg.neteasecloudmusic.utils.AlertUtil;
 import com.zsorg.neteasecloudmusic.views.viewholders.PlayAllHolder;
 import com.zsorg.neteasecloudmusic.views.viewholders.SongListItemHolder;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +65,7 @@ public class MusicSingleAdapter extends BaseAdapter {
             final MusicBean bean = mList.get(position - 1);
 
             final SongListItemHolder itemHolder = (SongListItemHolder) holder;
-            Context context = itemHolder.tvTitle.getContext();
+            final Context context = itemHolder.tvTitle.getContext();
             String unknown = context.getString(R.string.unknown);
             title = bean.getName() == null ? unknown : bean.getName();
             itemHolder.setTitle(title);
@@ -79,18 +86,37 @@ public class MusicSingleAdapter extends BaseAdapter {
                             } else {
                                 ArrayList<MusicBean> beanList = new ArrayList<>();
                                 beanList.add(bean);
-                                MusicPlayerService.startActionSet(itemHolder.tvTitle.getContext(), beanList, 0);
+                                MusicPlayerService.startActionSet(context, beanList, 0);
 //                                mPlayer.setCurrentPlaylist(beanList);
 //                                mPlayer.setCurrentPosition(0);
 //                                mPlayer.playMusic(itemHolder.tvTitle.getContext());
-                                MusicPlayerService.startActionPlay(itemHolder.tvTitle.getContext(),true);
+                                MusicPlayerService.startActionPlay(context,true);
                             }
                             break;
                         case 1:
+                            //收藏
+
+                            AlertUtil.showCollectionDialog(context,bean);
                             break;
                         case 2:
+                            //分享
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setType("audio/x-mpeg");
+                            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(bean.getPath())));
+                            context.startActivity(Intent.createChooser(intent,context.getString(R.string.share_to)));
                             break;
                         case 3:
+//                            删除
+                            AlertUtil.showDeleteDialog(context, new OnDeleteListener() {
+                                @Override
+                                public void onDelete(boolean isDeleteOnDisk) {
+                                    new DiskMusicDao(context).deleteSingleSong(bean.getPath());
+                                    if (isDeleteOnDisk) {
+                                        new File(bean.getPath()).delete();
+                                    }
+                                }
+                            });
+
                             break;
                     }
                 }

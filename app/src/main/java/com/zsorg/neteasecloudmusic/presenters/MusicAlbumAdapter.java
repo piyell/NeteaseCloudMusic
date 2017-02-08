@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.MusicPlayerService;
+import com.zsorg.neteasecloudmusic.OnDeleteListener;
 import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.GroupSongMenuModel;
@@ -15,10 +16,22 @@ import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
+import com.zsorg.neteasecloudmusic.utils.AlertUtil;
+import com.zsorg.neteasecloudmusic.utils.FileUtil;
 import com.zsorg.neteasecloudmusic.views.viewholders.AlbumHolder;
 
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.internal.Utils;
+import io.reactivex.Flowable;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by piyel_000 on 2017/1/6.
@@ -50,27 +63,21 @@ public class MusicAlbumAdapter extends BaseAdapter<AlbumHolder> {
             holder.setOnMenuItemClickListener(new OnMenuItemClickListener() {
                 @Override
                 public void onMenuItemClick(int menuPosition) {
+                    final DiskMusicDao diskMusicDao = new DiskMusicDao(context);
+                    final ArrayList<MusicBean> list = (ArrayList<MusicBean>) diskMusicDao.queryAlbumMusicBeanList(bean.getAlbum());
                     if (menuPosition == 0) {
-                        ArrayList<MusicBean> list = (ArrayList<MusicBean>) new DiskMusicDao(context).queryAlbumMusicBeanList(bean.getAlbum());
                         MusicPlayerService.startActionSet(context, list, 0);
                         MusicPlayerService.startActionPlay(context, true);
                     } else {
-                        new AlertDialog.Builder(context)
-                                .setTitle(R.string.confirm_to_remove_music)
-                                .setMultiChoiceItems(R.array.delete_on_disk_choice, new boolean[]{false}, new DialogInterface.OnMultiChoiceClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-
-                                    }
-                                })
-                                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                    }
-                                })
-                                .setNegativeButton(R.string.cancel, null)
-                                .show();
+                        AlertUtil.showDeleteDialog(context, new OnDeleteListener() {
+                            @Override
+                            public void onDelete(boolean isDeleteOnDisk) {
+                                diskMusicDao.deleteAlbumMusicList(bean.getAlbum());
+                                if (isDeleteOnDisk) {
+                                    FileUtil.deleteFileOnDisk(list);
+                                }
+                            }
+                        });
                     }
                 }
             });

@@ -49,6 +49,16 @@ public class MusicBean implements Parcelable{
         parcel.writeLong(mDuration);
     }
 
+    @Override
+    public int hashCode() {
+        return mPath==null?0:mPath.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof MusicBean && (((MusicBean) obj).hashCode()==hashCode());
+    }
+
     public MusicBean(String name, String singer, String album, long duration, String path) {
         mPath = path;
         mName = name;

@@ -50,6 +50,24 @@ public class PlayerPresenter implements OnTrackListener {
         MusicPlayerService.startActionSet(iPlayerView.getContext(),list,position);
     }
 
+    public void addToPlaylist(MusicBean bean) {
+        PlayerManager manager = PlayerManager.getInstance(iPlayerView.getContext());
+        List<MusicBean> playlist = manager.getPlaylist();
+        if (null == playlist) {
+            playlist = new ArrayList<>();
+            manager.setCurrentPlaylist(playlist);
+        }
+        if (null!=bean) {
+            int index = playlist.indexOf(bean);
+
+            if (index<0) {
+                playlist.add(bean);
+                index = playlist.size() - 1;
+            }
+            manager.setCurrentPosition(index);
+        }
+    }
+
     public void syncPlayerInfo() {
         PlayerManager.getInstance(iPlayerView.getContext()).setOnTrackListener(this);
     }

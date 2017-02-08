@@ -114,6 +114,8 @@ public class MusicSingleAdapter extends BaseAdapter {
                                     if (isDeleteOnDisk) {
                                         new File(bean.getPath()).delete();
                                     }
+                                    mList.remove(position);
+                                    notifyItemRemoved(position);
                                 }
                             });
 

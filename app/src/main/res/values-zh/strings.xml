@@ -39,5 +39,7 @@
     <string name="confirm_to_remove_music">确定将所选音乐从本地列表中移除吗?</string>
     <string name="share_to">分享到</string>
     <string name="submit">提交</string>
+    <string name="cannot_delete_favorite">不能删除“我最喜欢的音乐”列表哦</string>
+    <string name="confirm_to_delete_playlist">确定将所选音乐列表删除吗？</string>
 
 </resources>

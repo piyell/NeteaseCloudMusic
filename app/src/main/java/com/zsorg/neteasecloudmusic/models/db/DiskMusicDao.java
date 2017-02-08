@@ -217,4 +217,20 @@ public class DiskMusicDao {
         return list;
     }
 
+    public List<MusicBean> queryWords(String text) {
+        Cursor cursor = mDBHelper.getReadableDatabase().rawQuery("select * from diskMusic where (name like '%"+text+"%')or(album like '%" + text + "%')"+" order by name desc;", null);
+        List<MusicBean> list = new ArrayList<>();
+        while (null != cursor && cursor.moveToNext()) {
+            String name = cursor.getString(0);
+            String singer = cursor.getString(1);
+            String album = cursor.getString(2);
+            int duration = cursor.getInt(3);
+            String path = cursor.getString(4);
+            list.add(new MusicBean(name,singer,album,duration, path));
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return list;
+    }
 }

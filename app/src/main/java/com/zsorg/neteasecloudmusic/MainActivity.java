@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,17 +27,21 @@ import android.widget.TextView;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.presenters.MusicSearchPresenter;
 import com.zsorg.neteasecloudmusic.presenters.PlayerPresenter;
 import com.zsorg.neteasecloudmusic.presenters.SearchAdapter;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
+import com.zsorg.neteasecloudmusic.views.ISearchView;
 import com.zsorg.neteasecloudmusic.widgets.PlaylistDialog;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity
-        implements IPlayerView,NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, SearchView.OnCloseListener, ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
+        implements IPlayerView,NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, SearchView.OnCloseListener, ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener, SearchView.OnQueryTextListener, ISearchView, OnItemCLickListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawer;
@@ -52,6 +57,8 @@ public class MainActivity extends AppCompatActivity
     ViewPager mViewpager;
     @BindView(R.id.bottomLayout)
     View mBottomLayout;
+    @BindView(R.id.layout_search)
+    View layoutSearch;
     @BindView(R.id.rv_search)
     RecyclerView mRvSearch;
     @BindView(R.id.tv_song_name)
@@ -68,6 +75,8 @@ public class MainActivity extends AppCompatActivity
     private PlayerPresenter mPlayerPresenter;
     private PlaylistDialog mDialog;
     private int mCurrentPosition=0;
+    private MusicSearchPresenter mSearchPresenter;
+    private SearchAdapter mSearchAdapter;
 
 
     @Override
@@ -86,7 +95,9 @@ public class MainActivity extends AppCompatActivity
 
         mRvSearch.setLayoutManager(new LinearLayoutManager(this));
         mRvSearch.addItemDecoration(LineItemDecorator.getInstance());
-        mRvSearch.setAdapter(new SearchAdapter(getLayoutInflater()));
+        mSearchAdapter = new SearchAdapter(getLayoutInflater());
+        mSearchAdapter.setOnItemClickListener(this);
+        mRvSearch.setAdapter(mSearchAdapter);
 
         mNavigationView.setNavigationItemSelectedListener(this);
         mSearchView.setOnSearchClickListener(this);
@@ -98,7 +109,10 @@ public class MainActivity extends AppCompatActivity
 
         mRadioGroup.setOnCheckedChangeListener(this);
 
+        mSearchView.setOnQueryTextListener(this);
+
         mPlayerPresenter = new PlayerPresenter(this);
+        mSearchPresenter = new MusicSearchPresenter(this);
     }
 
     @Override
@@ -126,13 +140,15 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+
     @Override
     public void displayMusicInfo(MusicBean bean) {
         if (null!=mDialog && mDialog.isShowing()) {
             mDialog.setCurrentPlayPosition(PlayerManager.getInstance(this).getCurrentPosition());
         }
         if (null != bean) {
-            mBottomLayout.setVisibility(mRvSearch.getVisibility()==View.VISIBLE?View.GONE:View.VISIBLE);
+            mBottomLayout.setVisibility(layoutSearch.getVisibility()==View.VISIBLE?View.GONE:View.VISIBLE);
             tvSongName.setText(bean.getName());
             ImageCacheManager2.getInstance(this).displayImage(ivAlbum,bean.getPath());
             String singer = bean.getSinger();
@@ -148,6 +164,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    public void updateSearchResult(List<MusicBean> results) {
+        mSearchAdapter.setDatas(results);
     }
 
     @Override
@@ -169,15 +190,6 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_scan) {
             startActivity(new Intent(this, ScanMusicActivity.class));
-        } else if (id == R.id.nav_slideshow) {
-
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
@@ -198,7 +210,8 @@ public class MainActivity extends AppCompatActivity
         mRadioGroup.setVisibility(View.GONE);
         mBottomLayout.setVisibility(View.GONE);
         mViewpager.setVisibility(View.GONE);
-        mRvSearch.setVisibility(View.VISIBLE);
+        mSearchAdapter.setDatas(null);
+        layoutSearch.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.bottomLayout)
@@ -215,6 +228,11 @@ public class MainActivity extends AppCompatActivity
         mDialog.setPeekHeight(this);
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        mPlayerPresenter.addToPlaylist(mSearchAdapter.getDataAtPosition(position));
+        mPlayerPresenter.startPlay(true);
+    }
 
     @OnClick(R.id.iv_play)
     public void onPlayClick(){
@@ -240,7 +258,7 @@ public class MainActivity extends AppCompatActivity
         mBottomLayout.setVisibility(View.VISIBLE);
         mViewpager.setVisibility(View.VISIBLE);
 
-        mRvSearch.setVisibility(View.GONE);
+        layoutSearch.setVisibility(View.GONE);
 
         mPlayerPresenter.requestMusicInfo();
         return false;
@@ -268,6 +286,26 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
         mViewpager.setCurrentItem(i == R.id.action_music ? 0 : 1);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        if (!TextUtils.isEmpty(query)) {
+            mSearchPresenter.searchMusic(query);
+        } else {
+            mSearchAdapter.setDatas(null);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (!TextUtils.isEmpty(newText)) {
+            mSearchPresenter.searchMusic(newText);
+        } else {
+            mSearchAdapter.setDatas(null);
+        }
+        return true;
     }
 
 }

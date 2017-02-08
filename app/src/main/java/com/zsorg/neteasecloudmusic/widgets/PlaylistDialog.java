@@ -137,12 +137,12 @@ public class PlaylistDialog extends BaseBottomSheetDialog implements OnItemCLick
 
     private class PlaylistAdapter extends BaseAdapter<MyHolder> {
 
-        private final String unkown;
+        private final String unknown;
         private OnItemCloseListener onItemCloseListener;
 
         public PlaylistAdapter(@NonNull LayoutInflater inflater) {
             super(inflater);
-            unkown = getContext().getString(R.string.unknown);
+            unknown = getContext().getString(R.string.unknown);
         }
 
         @Override
@@ -157,7 +157,7 @@ public class PlaylistDialog extends BaseBottomSheetDialog implements OnItemCLick
             MusicBean bean = mList.get(position);
 
             holder.tvName.setText(bean.getName());
-            String singer = bean.getSinger() == null ? unkown : bean.getSinger();
+            String singer = bean.getSinger() == null ? unknown : bean.getSinger();
             singer = " - " + singer;
             holder.tvSinger.setText(singer);
 

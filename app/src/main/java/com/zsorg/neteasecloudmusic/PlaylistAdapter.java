@@ -2,6 +2,7 @@ package com.zsorg.neteasecloudmusic;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class PlaylistAdapter extends BaseAdapter<PlaylistHolder> {
     }
 
     @Override
-    public void onBindHolder(final PlaylistHolder holder, int position) {
+    public void onBindHolder(final PlaylistHolder holder, final int position) {
 
         final MusicBean bean = mValues.get(position);
 
@@ -62,10 +63,17 @@ public class PlaylistAdapter extends BaseAdapter<PlaylistHolder> {
                         MusicPlayerService.startActionSet(context, list, 0);
                         MusicPlayerService.startActionPlay(context, true);
                     } else {
-                        AlertUtil.showDeleteDialog(context, new OnDeleteListener() {
+                        AlertUtil.showDeletePlaylistDialog(context, new OnDeleteListener() {
                             @Override
                             public void onDelete(boolean isDeleteOnDisk) {
-                                model.deletePlaylist((int) bean.getDuration());
+                                int playlistID = (int) bean.getDuration();
+                                if (playlistID > 0) {
+                                    model.deletePlaylist(playlistID);
+                                    mValues.remove(position);
+                                    notifyItemRemoved(position);
+                                } else {
+                                    Snackbar.make(holder.iv,R.string.cannot_delete_favorite,Snackbar.LENGTH_SHORT).show();
+                                }
                             }
                         });
                     }

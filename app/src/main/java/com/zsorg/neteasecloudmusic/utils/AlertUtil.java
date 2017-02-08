@@ -59,6 +59,22 @@ public class AlertUtil {
                 .show();
     }
 
+    public static void showDeletePlaylistDialog(Context context, final OnDeleteListener listener) {
+        final boolean[] isDeleteOnDisk = new boolean[1];
+        new AlertDialog.Builder(context)
+                .setMessage(R.string.confirm_to_delete_playlist)
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (listener != null) {
+                            listener.onDelete(isDeleteOnDisk[0]);
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+    }
+
     public static void showCollectionDialog(final Context context, final MusicBean bean) {
         final PlaylistModel model = new PlaylistModel(context);
         final AlertDialog dialog = new AlertDialog.Builder(context)

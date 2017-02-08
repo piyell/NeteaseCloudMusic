@@ -21,9 +21,9 @@ public class DiskMusicHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table if not exists diskMusic(name varchar not null,singer varchar,album varchar,duration integer ,path varchar not null,parent varchar); ");
-        db.execSQL("create table playlist(list_id integer not null  default 1 primary key autoincrement,name text,path text);");
+        db.execSQL("create table if not playlist(list_id integer not null  default 1 primary key autoincrement,name text,path text);");
         db.execSQL("insert into playlist(list_id,name) values(0,\"我喜欢的音乐\");");
-        db.execSQL("create table playlist_detail(list_id integer not null,path varchar not null);");
+        db.execSQL("create table if not playlist_detail(list_id integer not null,path varchar not null);");
     }
 
     @Override

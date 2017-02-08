@@ -42,7 +42,7 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
     }
 
     @Override
-    public void onBindHolder(SingerHolder holder, int position) {
+    public void onBindHolder(SingerHolder holder, final int position) {
         final MusicBean bean = mList.get(position);
         final Context context = holder.tvTitle.getContext();
         ImageCacheManager2.getInstance(context).displayImage(holder.iv,bean.getPath());
@@ -68,6 +68,8 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
                                 if (isDeleteOnDisk) {
                                     FileUtil.deleteFileOnDisk(list);
                                 }
+                                mList.remove(position);
+                                notifyItemRemoved(position);
                             }
                         });
                     }

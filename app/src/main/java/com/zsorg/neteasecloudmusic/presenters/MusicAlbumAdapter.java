@@ -76,6 +76,8 @@ public class MusicAlbumAdapter extends BaseAdapter<AlbumHolder> {
                                 if (isDeleteOnDisk) {
                                     FileUtil.deleteFileOnDisk(list);
                                 }
+                                mList.remove(position);
+                                notifyItemRemoved(position);
                             }
                         });
                     }

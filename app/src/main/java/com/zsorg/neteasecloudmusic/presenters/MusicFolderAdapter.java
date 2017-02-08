@@ -43,7 +43,7 @@ public class MusicFolderAdapter extends BaseAdapter<FolderHolder> {
     }
 
     @Override
-    public void onBindHolder(FolderHolder holder, int position) {
+    public void onBindHolder(FolderHolder holder, final int position) {
 
         final MusicBean bean = mList.get(position);
 
@@ -71,6 +71,8 @@ public class MusicFolderAdapter extends BaseAdapter<FolderHolder> {
                                 if (isDeleteOnDisk) {
                                     FileUtil.deleteFileOnDisk(list);
                                 }
+                                mList.remove(position);
+                                notifyItemRemoved(position);
                             }
                         });
                     }

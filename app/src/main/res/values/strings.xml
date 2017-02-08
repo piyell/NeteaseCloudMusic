@@ -44,6 +44,8 @@
     <string name="new_playlist">新建歌单</string>
     <string name="input_playlist_title">请输入歌单标题</string>
     <string name="submit">提交</string>
+    <string name="cannot_delete_favorite">不能删除“我最喜欢的音乐”列表哦</string>
+    <string name="confirm_to_delete_playlist">确定将所选音乐列表删除吗？</string>
 
     <string-array name="delete_on_disk_choice">
         <item>@string/delete_on_disk</item>

@@ -151,7 +151,7 @@ public class MusicPlayerService extends IntentService {
 
 //    private void playMusic(final int position) {
 //        if (position < mCurrentPlaylist.size()) {
-//            PlayerManager.getInstance(this).playMusic(this, mCurrentPlaylist.get(position).getPath()).setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            PlayerManager.newInstance(this).playMusic(this, mCurrentPlaylist.get(position).getPath()).setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 //                @Override
 //                public void onCompletion(MediaPlayer mediaPlayer) {
 //                    playMusic(position + 1);

@@ -12,6 +12,8 @@ import com.zsorg.neteasecloudmusic.CONST;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.SubMusicFragment;
 
+import java.util.ArrayList;
+
 import butterknife.BindArray;
 import butterknife.BindString;
 import butterknife.ButterKnife;
@@ -21,6 +23,7 @@ import butterknife.ButterKnife;
  */
 
 public class MusicPagerAdapter extends FragmentPagerAdapter {
+    private final ArrayList<SubMusicFragment> mList;
     @BindArray(R.array.music)
     String[] mTabName;
     private int[] mFragmentType = {CONST.TYPE_SINGLE, CONST.TYPE_SINGER, CONST.TYPE_ALBUM, CONST.TYPE_FOLDER};
@@ -28,11 +31,17 @@ public class MusicPagerAdapter extends FragmentPagerAdapter {
     public MusicPagerAdapter(View view, FragmentManager fm) {
         super(fm);
         ButterKnife.bind(this, view);
+
+        mList = new ArrayList<>();
+        for (int position=0;position<mFragmentType.length;position++) {
+            mList.add(SubMusicFragment.newInstance(mFragmentType[position]));
+        }
+
     }
 
     @Override
     public Fragment getItem(int position) {
-        return SubMusicFragment.newInstance(mFragmentType[position]);
+        return mList.get(position);
     }
 
     @Override

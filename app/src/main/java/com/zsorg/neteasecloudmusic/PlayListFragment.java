@@ -37,6 +37,12 @@ public class PlayListFragment extends Fragment implements IPlaylistView, OnItemC
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.requestList();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_play_list, container, false);
@@ -52,7 +58,6 @@ public class PlayListFragment extends Fragment implements IPlaylistView, OnItemC
             mAdapter.addHeaderView(inflater.inflate(R.layout.play_list_header,null));
             recyclerView.setAdapter(mAdapter);
             mPresenter = new PlaylistPresenter(this);
-            mPresenter.requestList();
         }
         return view;
     }

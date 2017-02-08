@@ -88,6 +88,7 @@ public class MusicSingerAdapter extends BaseAdapter<SingerHolder> {
     @Override
     public void setDatas(List list) {
         mList = list;
+        notifyDataSetChanged();
     }
 
     @Override

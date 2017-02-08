@@ -85,7 +85,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
 //        mPresenter.setPlaylist(id, position);
 
-//        ivPlay.setImageResource(PlayerManager.getInstance(this).isPause() ? R.drawable.ic_play : R.drawable.ic_pause);
+//        ivPlay.setImageResource(PlayerManager.newInstance(this).isPause() ? R.drawable.ic_play : R.drawable.ic_pause);
 
 
 //        setBlurBackground(BitmapFactory.decodeResource(getResources(), R.drawable.play_bg_night));
@@ -131,7 +131,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (null != bean) {
 //
-//            if (!PlayerManager.getInstance(getContext()).isPause()) {
+//            if (!PlayerManager.newInstance(getContext()).isPause()) {
 //                mDiscChanger.startEnd2StartAnimation();
 //            } else {
 //                mDiscChanger.startStart2EndAnimation();

@@ -93,7 +93,7 @@ class DiscPageChanger implements ViewPager.OnPageChangeListener, Animator.Animat
 
 
     public void startEnd2StartAnimation() {
-//        if (!PlayerManager.getInstance(mNeedle.getContext()).isPause()) {
+//        if (!PlayerManager.newInstance(mNeedle.getContext()).isPause()) {
             mAnimator.setFloatValues((float) mAnimator.getAnimatedValue(), START_VALUE);
 //            mAnimator.setFloatValues((float) END_VALUE, START_VALUE);
             if (!mAnimator.isRunning()) {

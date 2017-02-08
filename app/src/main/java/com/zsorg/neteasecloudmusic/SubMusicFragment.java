@@ -46,8 +46,6 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
 
     private BaseAdapter mAdapter;
 
-    private OnFragmentInteractionListener mListener;
-
     @BindView(R.id.rv_sub_music)
     RecyclerView mRecyclerView;
     private SubMusicPresenter mPresenter;
@@ -76,6 +74,14 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mMusicType = getArguments().getInt(MUSIC_TYPE);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (null!=mPresenter) {
+            mPresenter.requestList(mMusicType);
         }
     }
 
@@ -112,30 +118,6 @@ public class SubMusicFragment extends Fragment implements ISubMusicView, OnItemC
         mPresenter.requestList(mMusicType);
 
         return view;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 
     @Override

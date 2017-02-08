@@ -97,6 +97,7 @@ public class MusicAlbumAdapter extends BaseAdapter<AlbumHolder> {
     @Override
     public void setDatas(List<MusicBean> list) {
         mList = list;
+        notifyDataSetChanged();
     }
 
     @Override

@@ -1,11 +1,11 @@
 package com.zsorg.neteasecloudmusic;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,19 +24,15 @@ import butterknife.ButterKnife;
  * Use the {@link MusicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MusicFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MusicFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
     @BindView(R.id.music_tab)
     TabLayout mTabLayout;
     @BindView(R.id.music_viewpager)
     ViewPager mViewpager;
 
-
-    private OnFragmentInteractionListener mListener;
+    private MusicPagerAdapter mAdapter;
+    private int mCurrentPosition=0;
 
     public MusicFragment() {
         // Required empty public constructor
@@ -58,40 +54,47 @@ public class MusicFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Fragment fragment = null;
+        if (null!=mAdapter) {
+            fragment = mAdapter.getItem(mCurrentPosition);
+        }
+        if (null!=fragment) {
+            fragment.onResume();
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_music, container, false);
         ButterKnife.bind(this, view);
 
-        mViewpager.setAdapter(new MusicPagerAdapter(view,getChildFragmentManager()));
+        Log.e("tag", "onCreateView");
+        mAdapter = new MusicPagerAdapter(view, getChildFragmentManager());
+        mViewpager.setAdapter(mAdapter);
+        mViewpager.addOnPageChangeListener(this);
         mTabLayout.setupWithViewPager(mViewpager);
 
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-        }
+    public void onPageSelected(int position) {
+        mCurrentPosition = position;
+        mAdapter.getItem(mCurrentPosition).onResume();
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onPageScrollStateChanged(int state) {
+
     }
 
     /**

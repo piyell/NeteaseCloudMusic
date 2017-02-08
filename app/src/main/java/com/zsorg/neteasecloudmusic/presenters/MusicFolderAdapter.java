@@ -93,6 +93,7 @@ public class MusicFolderAdapter extends BaseAdapter<FolderHolder> {
     @Override
     public void setDatas(List list) {
         mList = list;
+        notifyDataSetChanged();
     }
 
     @Override

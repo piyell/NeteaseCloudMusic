@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     private MainAdapter adapter;
     private PlayerPresenter mPlayerPresenter;
     private PlaylistDialog mDialog;
+    private int mCurrentPosition=0;
 
 
     @Override
@@ -106,6 +108,10 @@ public class MainActivity extends AppCompatActivity
         if (null!=mPlayerPresenter) {
             mPlayerPresenter.requestMusicInfo();
             mPlayerPresenter.syncPlayerInfo();
+            Fragment fragment = adapter.getItem(mCurrentPosition);
+            if (null!=fragment) {
+                fragment.onResume();
+            }
         }
 
     }
@@ -247,7 +253,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onPageSelected(int position) {
+        mCurrentPosition = position;
         mRadioGroup.check(position == 0 ? R.id.action_music : R.id.action_list);
+        Fragment fragment = adapter.getItem(mCurrentPosition);
+        if (null!=fragment) {
+            fragment.onResume();
+        }
     }
 
     @Override

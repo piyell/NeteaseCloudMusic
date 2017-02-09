@@ -1,10 +1,11 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.activities;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.utils.DebugUtils;
 
 public class SplashActivity extends AppCompatActivity {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_music_order">
+        <item>@string/order_list</item>
+        <item>@string/order_random</item>
+        <item>@string/order_single</item>
+    </string-array>
+
+</resources>

@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.activities;
 
 import android.Manifest;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.presenters.ScanMusicPresenter;
 import com.zsorg.neteasecloudmusic.views.IScanMusicView;
 

@@ -17,12 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/StartAppTheme">
             <intent-filter>
@@ -32,19 +32,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PlayerActivity"
+            android:name=".activities.PlayerActivity"
             android:theme="@style/AppTheme.Translucent" />
         <activity
-            android:name=".ScanMusicActivity"
+            android:name=".activities.ScanMusicActivity"
             android:theme="@style/AppTheme.Translucent" />
-
         <activity
-            android:name=".MusicListActivity"
+            android:name=".activities.MusicListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-        android:name=".MusicPlayerService"
-        android:exported="false" />
+            android:name=".MusicPlayerService"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.ConfigActivity"
+            android:label="@string/title_activity_config"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

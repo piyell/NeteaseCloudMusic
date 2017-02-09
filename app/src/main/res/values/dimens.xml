@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -45,4 +45,13 @@
     <dimen name="bottom_sheet_item_subtext_size">12sp</dimen>
     <dimen name="menu_icon_size">25dp</dimen>
     <dimen name="dialog_padding">8dp</dimen>
+    <dimen name="nav_bottom_text_size">15sp</dimen>
+    <dimen name="nav_bottom_line_height">25dp</dimen>
+    <dimen name="nav_bottom_padding">10dp</dimen>
+
+    <!--更改NavigationView Icon大小-->
+    <dimen name="design_navigation_icon_size" tools:override="true">30dp</dimen>
+    <!--更改NavigationView Icon Padding-->
+    <dimen name="design_navigation_icon_padding" tools:override="true">10dp</dimen>
+    <dimen name="config_item_padding">10dp</dimen>
 </resources>

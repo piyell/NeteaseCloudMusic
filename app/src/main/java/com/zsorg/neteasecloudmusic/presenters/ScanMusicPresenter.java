@@ -31,7 +31,7 @@ public class ScanMusicPresenter {
     }
 
     public void scanMusic() {
-        final PlaylistModel playlistModel = new PlaylistModel(iScanMusicView.getContext());
+//        final PlaylistModel playlistModel = new PlaylistModel(iScanMusicView.getContext());
         new ScanMusicModel().scanMusicFile().observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<MusicBean>() {
             @Override
             public void onSubscribe(Subscription s) {
@@ -43,7 +43,7 @@ public class ScanMusicPresenter {
             @Override
             public void onNext(MusicBean musicBean) {
                 mScanMusicDao.addMusic(musicBean);
-                playlistModel.addToPlaylist(CONST.TEMP_PLAYLIST_ID,musicBean.getPath());
+//                playlistModel.addToPlaylist(CONST.TEMP_PLAYLIST_ID,musicBean.getPath());
             }
 
             @Override

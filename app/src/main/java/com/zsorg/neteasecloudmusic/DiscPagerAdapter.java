@@ -16,7 +16,7 @@ import java.util.List;
  * Created by piyel_000 on 2017/1/8.
  */
 
-class DiscPagerAdapter extends PagerAdapter {
+public class DiscPagerAdapter extends PagerAdapter {
 
     private final LayoutInflater mInflater;
     private final List<MusicBean> playlist;

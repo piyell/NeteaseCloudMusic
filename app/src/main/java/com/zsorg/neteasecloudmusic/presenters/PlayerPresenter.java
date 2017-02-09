@@ -116,4 +116,16 @@ public class PlayerPresenter implements OnTrackListener {
     public void cancelFavorite() {
         new PlaylistModel(iPlayerView.getContext()).deleteFromPlaylist(CONST.PLAYLIST_FAVORITE,PlayerManager.getInstance(iPlayerView.getContext()).getMusicBean().getPath());
     }
+
+    public MusicBean getPlayerMusicBean() {
+        return PlayerManager.getInstance(iPlayerView.getContext()).getMusicBean();
+    }
+
+    public List<MusicBean> getPlayerPlaylist() {
+        return PlayerManager.getInstance(iPlayerView.getContext()).getPlaylist();
+    }
+
+    public void stop() {
+        PlayerManager.getInstance(iPlayerView.getContext()).stop();
+    }
 }

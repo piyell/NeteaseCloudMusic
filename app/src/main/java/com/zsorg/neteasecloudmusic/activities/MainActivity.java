@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,6 +25,11 @@ import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.zsorg.neteasecloudmusic.LineItemDecorator;
+import com.zsorg.neteasecloudmusic.MainAdapter;
+import com.zsorg.neteasecloudmusic.MusicPlayerService;
+import com.zsorg.neteasecloudmusic.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
@@ -196,6 +202,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && layoutSearch.getVisibility()==View.VISIBLE) {
+            mSearchView.setIconified(true);
+            onClose();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
     }
@@ -216,7 +232,23 @@ public class MainActivity extends AppCompatActivity
 
     @OnClick(R.id.bottomLayout)
     public void onBottomLayoutClick(){
-        startActivity(new Intent(this,PlayerActivity.class));
+        Intent intent = new Intent(this, PlayerActivity.class);
+        startActivity(intent);
+
+    }
+
+    @OnClick(R.id.tv_config)
+    public void onConfigClick(){
+        Intent intent = new Intent(this, ConfigActivity.class);
+        startActivity(intent);
+
+    }
+
+    @OnClick(R.id.tv_quit)
+    public void onQuitClick(){
+        mPlayerPresenter.stop();
+        finish();
+        stopService(new Intent(this, MusicPlayerService.class));
     }
 
     @OnClick(R.id.iv_list)

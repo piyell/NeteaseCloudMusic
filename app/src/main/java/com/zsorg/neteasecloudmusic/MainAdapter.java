@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by piyel_000 on 2017/1/2.
  */
 
-class MainAdapter extends FragmentPagerAdapter implements IFragmentAdapter {
+public class MainAdapter extends FragmentPagerAdapter implements IFragmentAdapter {
 
 
     private final ArrayList<Fragment> mList;

@@ -1,11 +1,12 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.view.ViewPager;
@@ -18,14 +19,25 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.zsorg.neteasecloudmusic.DiscPageChanger;
+import com.zsorg.neteasecloudmusic.DiscPagerAdapter;
+import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
+import com.zsorg.neteasecloudmusic.models.PlayerMenuModel;
+import com.zsorg.neteasecloudmusic.models.beans.MenuBean;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.presenters.PlayerPresenter;
+import com.zsorg.neteasecloudmusic.utils.AlertUtil;
 import com.zsorg.neteasecloudmusic.utils.BlurUtil;
 import com.zsorg.neteasecloudmusic.utils.TimeUtil;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
+import com.zsorg.neteasecloudmusic.widgets.MenuDialog;
 import com.zsorg.neteasecloudmusic.widgets.PlaylistDialog;
+
+import java.io.File;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,6 +71,19 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private PlayerPresenter mPresenter;
     private PlaylistDialog mDialog;
     private DiscPageChanger mDiscChanger;
+    private DiscPagerAdapter mAdapter;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(R.anim.activity_right_in,R.anim.activity_left_out);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.activity_left_in,R.anim.activity_right_out);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +100,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        mViewPager.setAdapter(new DiscPagerAdapter(getLayoutInflater()));
+        mAdapter = new DiscPagerAdapter(getLayoutInflater());
+        mViewPager.setAdapter(mAdapter);
 
         mDiscChanger = new DiscPageChanger(mViewPager, needle);
         mViewPager.addOnPageChangeListener(mDiscChanger);
@@ -92,6 +118,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
         mPresenter.requestMusicInfo();
     }
+
 
     @Override
     protected void onResume() {
@@ -171,6 +198,35 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         updateFavoriteButton();
+    }
+
+    @OnClick(R.id.iv_right)
+    public void onMenuClick() {
+        MenuDialog dialog = new MenuDialog(this);
+        dialog.setTitle(getTitle());
+        List<MenuBean> menuList = PlayerMenuModel.getInstance(this).getMenuList();
+        dialog.setMenuList(menuList);
+        dialog.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+            @Override
+            public void onMenuItemClick(int menuPosition) {
+                final MusicBean bean = mPresenter.getPlayerMusicBean();
+                switch (menuPosition) {
+                    case 0:
+                        //收藏
+
+                        AlertUtil.showCollectionDialog(PlayerActivity.this, bean);
+                        break;
+                    case 1:
+                        //分享
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("audio/x-mpeg");
+                        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(bean.getPath())));
+                        startActivity(Intent.createChooser(intent, getString(R.string.share_to)));
+                        break;
+                }
+            }
+        });
+        dialog.show();
     }
 
     @OnClick(R.id.iv_next)

@@ -29,7 +29,11 @@ public class ScanMusicModel implements IMusicModel {
                 .flatMap(new Function<File, Publisher<MusicBean>>() {
                     @Override
                     public Publisher<MusicBean> apply(File file) throws Exception {
-                        return Flowable.just(MP3Util.parseMP3File(file.getAbsolutePath()));
+                        MusicBean bean = MP3Util.parseMP3File(file.getAbsolutePath());
+                        if (null!=bean) {
+                            return Flowable.just(bean).subscribeOn(Schedulers.computation());
+                        }
+                        return Flowable.empty();
                     }
                 });
     }

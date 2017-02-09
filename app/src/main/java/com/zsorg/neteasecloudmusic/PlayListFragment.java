@@ -9,11 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zsorg.neteasecloudmusic.activities.MusicListActivity;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.presenters.PlaylistPresenter;
 import com.zsorg.neteasecloudmusic.views.IPlaylistView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

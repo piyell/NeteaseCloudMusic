@@ -25,4 +25,8 @@ public class CONST {
     public static final int IMAGE_LOADED = 1;
     public static final int IMAGE_REQUEST_LOADING = 2;
     public static final int PLAYLIST_FAVORITE = 0;
+
+    public static final String SP_IS_FILTER_60 = "SP_IS_FILTER_60";
+    public static final String SP_MUSIC_ORDER = "SP_MUSIC_ORDER";
+    public static final int SP_MUSIC_ORDER_DEFAULT = 0;
 }

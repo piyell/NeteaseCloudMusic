@@ -46,10 +46,21 @@
     <string name="submit">提交</string>
     <string name="cannot_delete_favorite">不能删除“我最喜欢的音乐”列表哦</string>
     <string name="confirm_to_delete_playlist">确定将所选音乐列表删除吗？</string>
+    <string name="config">设置</string>
+    <string name="quit">退出应用</string>
 
     <string-array name="delete_on_disk_choice">
         <item>@string/delete_on_disk</item>
     </string-array>
+    <string name="title_activity_config">设置</string>
+    <string name="scan">扫描</string>
+    <string name="filter_less_than_60">过滤小于60秒的音频文件</string>
+    <string name="music">音乐</string>
+    <string name="music_play_order">音乐播放顺序</string>
+
+    <string name="order_list">列表循环</string>
+    <string name="order_random">随机循环</string>
+    <string name="order_single">单曲循环</string>
 
 
 </resources>

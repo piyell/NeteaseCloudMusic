@@ -21,7 +21,7 @@ import io.reactivex.functions.Consumer;
  * Created by piyel_000 on 2017/1/10.
  */
 
-class DiscPageChanger implements ViewPager.OnPageChangeListener, Animator.AnimatorListener {
+public class DiscPageChanger implements ViewPager.OnPageChangeListener, Animator.AnimatorListener {
 
     private final float START_VALUE = 0;
     private final float END_VALUE = -30;

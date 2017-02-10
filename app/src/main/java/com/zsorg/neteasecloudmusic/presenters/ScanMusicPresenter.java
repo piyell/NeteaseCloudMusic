@@ -1,6 +1,7 @@
 package com.zsorg.neteasecloudmusic.presenters;
 
 import com.zsorg.neteasecloudmusic.CONST;
+import com.zsorg.neteasecloudmusic.models.ConfigModel;
 import com.zsorg.neteasecloudmusic.models.PlaylistModel;
 import com.zsorg.neteasecloudmusic.models.ScanMusicModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
@@ -32,7 +33,9 @@ public class ScanMusicPresenter {
 
     public void scanMusic() {
 //        final PlaylistModel playlistModel = new PlaylistModel(iScanMusicView.getContext());
-        new ScanMusicModel().scanMusicFile().observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<MusicBean>() {
+        ScanMusicModel scanMusicModel = new ScanMusicModel();
+        scanMusicModel.setIsFilter60s(ConfigModel.getInstance(iScanMusicView.getContext()).isFilter60s());
+        scanMusicModel.scanMusicFile().observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<MusicBean>() {
             @Override
             public void onSubscribe(Subscription s) {
                 iScanMusicView.startScan();

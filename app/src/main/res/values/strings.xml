@@ -61,6 +61,7 @@
     <string name="order_list">列表循环</string>
     <string name="order_random">随机循环</string>
     <string name="order_single">单曲循环</string>
+    <string name="choose_music_order">选择音乐播放顺序</string>
 
 
 </resources>

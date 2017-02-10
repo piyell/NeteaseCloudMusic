@@ -6,12 +6,14 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.zsorg.neteasecloudmusic.CONST;
 import com.zsorg.neteasecloudmusic.OnTrackListener;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -31,6 +33,7 @@ public class PlayerManager implements MediaPlayer.OnCompletionListener {
 
     private static PlayerManager ourInstance;
     private static MediaPlayer mPlayer;
+    private final ConfigModel mConfigModel;
 
     private List<MusicBean> mCurrentPlaylist;
     private int mPosition;
@@ -202,7 +205,45 @@ public class PlayerManager implements MediaPlayer.OnCompletionListener {
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
         if (null!=mPlayer && !mPlayer.isPlaying() && mPlayer.getCurrentPosition()+200>=mPlayer.getDuration()) {
-            nextMusic();
+            int musicOrder = mConfigModel.getMusicOrder();
+            switch (musicOrder) {
+                case CONST.MUSIC_ORDER_SINGLE:
+                    setCurrentPosition(mPosition);
+                    if (!mediaPlayer.isPlaying()) {
+                        mediaPlayer.start();
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (null != onTrackListener) {
+                                    onTrackListener.onPlayStateChange(mPlayer.isPlaying());
+                                }
+                            }
+                        });
+
+                    }
+
+                    break;
+                case CONST.MUSIC_ORDER_LIST:
+                    nextMusic();
+                    break;
+                case CONST.MUSIC_ORDER_RANDOM:
+                    Random random = new Random();
+                    int position = random.nextInt(mCurrentPlaylist.size());
+                    setCurrentPosition(position);
+                    if (!mediaPlayer.isPlaying()) {
+                        mediaPlayer.start();
+                    }
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (null != onTrackListener) {
+                                onTrackListener.onPlayStateChange(mPlayer.isPlaying());
+                            }
+                        }
+                    });
+                    break;
+            }
+
         }
     }
 
@@ -241,19 +282,22 @@ public class PlayerManager implements MediaPlayer.OnCompletionListener {
 
                 } catch (IOException e) {
                     e.printStackTrace();
+                    if (null != onTrackListener) {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                onTrackListener.onPlayStateChange(false);
+                                final MusicBean bean = mCurrentPlaylist.get(mPosition);
+                                onTrackListener.onNext(bean);
+                            }
+                        });
+
+                    }
                 }
 
             } else {
-                if (null != onTrackListener && mPlayer.getCurrentPosition()+200>=mPlayer.getDuration()) {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            onTrackListener.onPlayStateChange(false);
-                            onTrackListener.onTrack(0);
-                        }
-                    });
-
-                }
+                mPosition = -1;
+                playMusicAtPosition(true);
             }
         }
     }
@@ -268,6 +312,7 @@ public class PlayerManager implements MediaPlayer.OnCompletionListener {
     }
 
     private PlayerManager(Context context) {
+        mConfigModel = ConfigModel.getInstance(context);
         getPlayer(context, Uri.EMPTY);
         Observable.interval(300, TimeUnit.MILLISECONDS).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
             @Override

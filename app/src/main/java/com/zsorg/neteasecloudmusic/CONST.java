@@ -29,4 +29,7 @@ public class CONST {
     public static final String SP_IS_FILTER_60 = "SP_IS_FILTER_60";
     public static final String SP_MUSIC_ORDER = "SP_MUSIC_ORDER";
     public static final int SP_MUSIC_ORDER_DEFAULT = 0;
+    public static final int MUSIC_ORDER_LIST = 0;
+    public static final int MUSIC_ORDER_SINGLE = 2;
+    public static final int MUSIC_ORDER_RANDOM = 1;
 }

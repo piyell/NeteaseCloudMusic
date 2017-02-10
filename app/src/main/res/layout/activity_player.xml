@@ -180,8 +180,8 @@
             <ImageView
                 android:id="@+id/iv_order"
                 style="@style/PlayActivityButtonWithoutMarginStyle"
-                android:layout_width="@dimen/play_activity_btn_big_size"
-                android:layout_height="@dimen/play_activity_btn_big_size"
+                android:layout_width="@dimen/play_activity_btn_size"
+                android:layout_height="@dimen/play_activity_btn_size"
                 android:layout_gravity="right|center_vertical"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/ic_play_list" />

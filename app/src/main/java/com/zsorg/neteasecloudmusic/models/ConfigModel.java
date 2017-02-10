@@ -8,6 +8,7 @@ import android.support.annotation.StringRes;
 import android.util.Log;
 
 import com.zsorg.neteasecloudmusic.CONST;
+import com.zsorg.neteasecloudmusic.ConfigCallback;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.beans.ConfigBean;
 import com.zsorg.neteasecloudmusic.models.beans.MenuBean;
@@ -33,6 +34,7 @@ public class ConfigModel implements IConfigModel{
     private final SharedPreferences mSP;
     private final String[] orders;
     private int mMusicOrder;
+    private ConfigCallback callback;
 
     @Override
     public List<ConfigBean> getConfigList() {
@@ -45,6 +47,15 @@ public class ConfigModel implements IConfigModel{
         SharedPreferences.Editor edit = mSP.edit();
         edit.putInt(CONST.SP_MUSIC_ORDER, musicOrder);
         edit.apply();
+        if (null != callback) {
+            callback.onMusicOrderConfigChanged(musicOrder);
+        }
+    }
+
+    public void setConfigCallback(ConfigCallback callback) {
+        this.callback = callback;
+        callback.onMusicOrderConfigChanged(mMusicOrder);
+        callback.onIsShow60sConfigChanged(isFilter60s());
     }
 
     public void setIsFilter60s(boolean isFilter) {
@@ -52,14 +63,21 @@ public class ConfigModel implements IConfigModel{
         SharedPreferences.Editor edit = mSP.edit();
         edit.putBoolean(CONST.SP_IS_FILTER_60, isFilter);
         edit.apply();
+        if (null != callback) {
+            callback.onIsShow60sConfigChanged(isFilter);
+        }
     }
 
     public boolean isFilter60s() {
         return mList.get(1).isSwitchChecked();
     }
 
-    public String getMusicOrder() {
+    public String getMusicOrderString() {
         return orders[mMusicOrder];
+    }
+
+    public int getMusicOrder() {
+        return mMusicOrder;
     }
 
     public static ConfigModel getInstance(Context context) {
@@ -73,6 +91,7 @@ public class ConfigModel implements IConfigModel{
 
     @Override
     protected void finalize() throws Throwable {
+        callback = null;
         super.finalize();
         Log.e("tag", "ConfigModel finalize");
     }

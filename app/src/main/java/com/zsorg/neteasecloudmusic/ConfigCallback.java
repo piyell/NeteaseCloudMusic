@@ -9,4 +9,6 @@ package com.zsorg.neteasecloudmusic;
  */
 
 public interface ConfigCallback {
+    void onMusicOrderConfigChanged(int newOrder);
+    void onIsShow60sConfigChanged(boolean isShow);
 }

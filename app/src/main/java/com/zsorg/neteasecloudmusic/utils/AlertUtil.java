@@ -17,6 +17,7 @@ import com.zsorg.neteasecloudmusic.OnItemCLickListener;
 import com.zsorg.neteasecloudmusic.OnTextSubmitListener;
 import com.zsorg.neteasecloudmusic.PlaylistAdapter;
 import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.models.ConfigModel;
 import com.zsorg.neteasecloudmusic.models.PlaylistModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
@@ -167,5 +168,21 @@ public class AlertUtil {
                 .setNegativeButton(R.string.cancel,null)
                 .show();
 
+    }
+
+    public static void showChooseMusicOrderDialog(Context context) {
+        String[] strings = context.getResources().getStringArray(R.array.array_music_order);
+        final ConfigModel model = ConfigModel.getInstance(context);
+        int order = model.getMusicOrder();
+        new AlertDialog.Builder(context)
+                .setTitle(R.string.choose_music_order)
+                .setSingleChoiceItems(strings, order, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        model.setMusicOrder(i);
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
     }
 }

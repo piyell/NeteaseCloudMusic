@@ -47,5 +47,6 @@
     <string name="filter_less_than_60">过滤小于60秒的音频文件</string>
     <string name="music">音乐</string>
     <string name="music_play_order">音乐播放顺序</string>
+    <string name="choose_music_order">选择音乐播放顺序</string>
 
 </resources>

@@ -22,6 +22,9 @@ import io.reactivex.schedulers.Schedulers;
 
 
 public class ScanMusicModel implements IMusicModel {
+
+    private boolean isFilter60s;
+
     @Override
     public Flowable<MusicBean> scanMusicFile() {
         return mScanMusicOnStorage(Environment.getExternalStorageDirectory())
@@ -30,7 +33,7 @@ public class ScanMusicModel implements IMusicModel {
                     @Override
                     public Publisher<MusicBean> apply(File file) throws Exception {
                         MusicBean bean = MP3Util.parseMP3File(file.getAbsolutePath());
-                        if (null!=bean) {
+                        if (null!=bean && (bean.getDuration()>60000 || !isFilter60s)) {
                             return Flowable.just(bean).subscribeOn(Schedulers.computation());
                         }
                         return Flowable.empty();
@@ -43,6 +46,10 @@ public class ScanMusicModel implements IMusicModel {
         return null;
     }
 
+    @Override
+    public void setIsFilter60s(boolean isFilter60s) {
+        this.isFilter60s = isFilter60s;
+    }
 
     private Flowable<File> mScanMusicOnStorage(@NonNull final File file) {
         File[] items = file.listFiles();

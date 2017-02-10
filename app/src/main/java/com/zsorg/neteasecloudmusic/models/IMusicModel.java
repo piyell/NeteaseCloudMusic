@@ -14,4 +14,6 @@ public interface IMusicModel {
 
     Flowable<MusicBean> loadMusicFile();
 
+    void setIsFilter60s(boolean isFilter60s);
+
 }

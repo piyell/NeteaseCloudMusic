@@ -1,15 +1,14 @@
 package com.zsorg.neteasecloudmusic;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
-import com.zsorg.neteasecloudmusic.activities.ConfigActivity;
+import com.zsorg.neteasecloudmusic.models.ConfigModel;
 import com.zsorg.neteasecloudmusic.models.beans.ConfigBean;
-import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.utils.AlertUtil;
 
 import java.util.List;
 
@@ -60,7 +59,7 @@ public class ConfigAdapter extends RecyclerView.Adapter<ConfigHolder> implements
         holder.scRight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
+                ConfigModel.getInstance(holder.tvTitle.getContext()).setIsFilter60s(b);
             }
         });
 
@@ -88,6 +87,7 @@ public class ConfigAdapter extends RecyclerView.Adapter<ConfigHolder> implements
 
     @Override
     public void onItemClick(View view, int position) {
+        AlertUtil.showChooseMusicOrderDialog(view.getContext());
         if (null != onItemCLickListener) {
             onItemCLickListener.onItemClick(view,position);
         }

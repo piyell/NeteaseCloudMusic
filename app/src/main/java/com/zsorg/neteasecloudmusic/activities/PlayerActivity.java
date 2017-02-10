@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zsorg.neteasecloudmusic.DiscPageChanger;
 import com.zsorg.neteasecloudmusic.DiscPagerAdapter;
@@ -26,12 +28,15 @@ import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.PlayerMenuModel;
+import com.zsorg.neteasecloudmusic.models.beans.ConfigBean;
 import com.zsorg.neteasecloudmusic.models.beans.MenuBean;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
+import com.zsorg.neteasecloudmusic.presenters.ConfigPresenter;
 import com.zsorg.neteasecloudmusic.presenters.PlayerPresenter;
 import com.zsorg.neteasecloudmusic.utils.AlertUtil;
 import com.zsorg.neteasecloudmusic.utils.BlurUtil;
 import com.zsorg.neteasecloudmusic.utils.TimeUtil;
+import com.zsorg.neteasecloudmusic.views.IConfigView;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
 import com.zsorg.neteasecloudmusic.widgets.MenuDialog;
 import com.zsorg.neteasecloudmusic.widgets.PlaylistDialog;
@@ -48,7 +53,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class PlayerActivity extends AppCompatActivity implements View.OnClickListener, IPlayerView {
+public class PlayerActivity extends AppCompatActivity implements View.OnClickListener, IPlayerView, IConfigView {
 
     @BindView(R.id.activity_player)
     View rootView;
@@ -60,6 +65,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     ImageView needle;
     @BindView(R.id.iv_play)
     ImageView ivPlay;
+    @BindView(R.id.iv_order)
+    ImageView ivOrder;
     @BindView(R.id.iv_heart)
     ImageView ivHeart;
     @BindView(R.id.sb_progress)
@@ -72,6 +79,10 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private PlaylistDialog mDialog;
     private DiscPageChanger mDiscChanger;
     private DiscPagerAdapter mAdapter;
+    private ConfigPresenter mConfigPresenter;
+
+    private int[] drawables = new int[]{R.drawable.ic_order_list, R.drawable.ic_order_random, R.drawable.ic_order_single};
+    private String[] orders;
 
     @Override
     protected void onStart() {
@@ -108,6 +119,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
 
         mPresenter = new PlayerPresenter(this);
+        mConfigPresenter = new ConfigPresenter(this);
 
 //        mPresenter.setPlaylist(id, position);
 
@@ -115,8 +127,9 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
 
 //        setBlurBackground(BitmapFactory.decodeResource(getResources(), R.drawable.play_bg_night));
-
+        orders = getResources().getStringArray(R.array.array_music_order);
         mPresenter.requestMusicInfo();
+        mConfigPresenter.requestLoadingList();
     }
 
 
@@ -125,6 +138,25 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         super.onResume();
         mPresenter.syncPlayerInfo();
         mPresenter.requestMusicInfo();
+    }
+
+    @Override
+    public void displayConfigList(final List<ConfigBean> list) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String order = list.get(0).getItemRight();
+                String[] orders = getResources().getStringArray(R.array.array_music_order);
+                int i = 0;
+                while (!order.equals(orders[i])) {
+                    i++;
+                }
+                ivOrder.setImageResource(drawables[i]);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -187,6 +219,15 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         } else {
             finish();
         }
+    }
+
+    @OnClick(R.id.iv_order)
+    public void onOrderClick() {
+        int order = mConfigPresenter.getMusicOrder();
+        order = (++order) % 3;
+        Toast.makeText(PlayerActivity.this,orders[order],Toast.LENGTH_SHORT).show();
+        mConfigPresenter.setMusicOrder(order);
+        ivOrder.setImageResource(drawables[order]);
     }
 
     @OnClick(R.id.iv_heart)

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zsorg.neteasecloudmusic.MusicFragment">
+    tools:context="com.zsorg.neteasecloudmusic.fragments.MusicFragment">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/music_tab"

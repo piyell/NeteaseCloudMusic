@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
+import com.zsorg.neteasecloudmusic.ConfigHolder;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ConfigModel;
 import com.zsorg.neteasecloudmusic.models.beans.ConfigBean;
 import com.zsorg.neteasecloudmusic.utils.AlertUtil;

@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.callbacks;
 
 /**
  * Project:NeteaseCloudMusic

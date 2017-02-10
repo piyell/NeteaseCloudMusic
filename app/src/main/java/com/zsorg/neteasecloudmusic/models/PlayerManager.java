@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.zsorg.neteasecloudmusic.CONST;
-import com.zsorg.neteasecloudmusic.OnTrackListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnTrackListener;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 
 import java.io.File;

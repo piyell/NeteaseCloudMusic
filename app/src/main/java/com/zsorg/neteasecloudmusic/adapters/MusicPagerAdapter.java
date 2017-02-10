@@ -1,21 +1,17 @@
-package com.zsorg.neteasecloudmusic.presenters;
+package com.zsorg.neteasecloudmusic.adapters;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.telephony.SmsMessage;
 import android.view.View;
 
 import com.zsorg.neteasecloudmusic.CONST;
 import com.zsorg.neteasecloudmusic.R;
-import com.zsorg.neteasecloudmusic.SubMusicFragment;
+import com.zsorg.neteasecloudmusic.fragments.SubMusicFragment;
 
 import java.util.ArrayList;
 
 import butterknife.BindArray;
-import butterknife.BindString;
 import butterknife.ButterKnife;
 
 /**

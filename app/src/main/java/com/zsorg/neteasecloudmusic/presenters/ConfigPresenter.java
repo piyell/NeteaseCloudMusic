@@ -1,6 +1,6 @@
 package com.zsorg.neteasecloudmusic.presenters;
 
-import com.zsorg.neteasecloudmusic.ConfigCallback;
+import com.zsorg.neteasecloudmusic.callbacks.ConfigCallback;
 import com.zsorg.neteasecloudmusic.models.ConfigModel;
 import com.zsorg.neteasecloudmusic.models.beans.ConfigBean;
 import com.zsorg.neteasecloudmusic.views.IConfigView;

@@ -12,10 +12,10 @@ import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zsorg.neteasecloudmusic.BaseAdapter;
+import com.zsorg.neteasecloudmusic.adapters.BaseAdapter;
 import com.zsorg.neteasecloudmusic.BaseHolder;
-import com.zsorg.neteasecloudmusic.OnItemCLickListener;
-import com.zsorg.neteasecloudmusic.OnItemCloseListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCloseListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;

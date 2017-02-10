@@ -1,13 +1,12 @@
-package com.zsorg.neteasecloudmusic.presenters;
+package com.zsorg.neteasecloudmusic.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.zsorg.neteasecloudmusic.BaseAdapter;
 import com.zsorg.neteasecloudmusic.MusicPlayerService;
-import com.zsorg.neteasecloudmusic.OnDeleteListener;
-import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnDeleteListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnMenuItemClickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.GroupSongMenuModel;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
@@ -17,17 +16,8 @@ import com.zsorg.neteasecloudmusic.utils.AlertUtil;
 import com.zsorg.neteasecloudmusic.utils.FileUtil;
 import com.zsorg.neteasecloudmusic.views.viewholders.SingerHolder;
 
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.Flowable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by piyel_000 on 2017/1/6.

@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.DrawableRes;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -22,8 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zsorg.neteasecloudmusic.DiscPageChanger;
-import com.zsorg.neteasecloudmusic.DiscPagerAdapter;
-import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
+import com.zsorg.neteasecloudmusic.adapters.DiscPagerAdapter;
+import com.zsorg.neteasecloudmusic.callbacks.OnMenuItemClickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;

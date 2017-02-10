@@ -3,6 +3,8 @@ package com.zsorg.neteasecloudmusic;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
+
 /**
  * Created by piyel_000 on 2017/1/5.
  */

@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zsorg.neteasecloudmusic.presenters.MusicPagerAdapter;
+import com.zsorg.neteasecloudmusic.R;
+import com.zsorg.neteasecloudmusic.adapters.MusicPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

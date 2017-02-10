@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zsorg.neteasecloudmusic.MusicPlayerService;
+import com.zsorg.neteasecloudmusic.callbacks.OnDeleteListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnMenuItemClickListener;
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.GroupSongMenuModel;
 import com.zsorg.neteasecloudmusic.models.PlaylistModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
-import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
 import com.zsorg.neteasecloudmusic.utils.AlertUtil;
-import com.zsorg.neteasecloudmusic.utils.FileUtil;
 import com.zsorg.neteasecloudmusic.views.viewholders.PlaylistHolder;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.adapters;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;

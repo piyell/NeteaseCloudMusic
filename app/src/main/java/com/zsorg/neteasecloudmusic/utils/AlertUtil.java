@@ -12,15 +12,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.zsorg.neteasecloudmusic.OnDeleteListener;
-import com.zsorg.neteasecloudmusic.OnItemCLickListener;
-import com.zsorg.neteasecloudmusic.OnTextSubmitListener;
-import com.zsorg.neteasecloudmusic.PlaylistAdapter;
+import com.zsorg.neteasecloudmusic.callbacks.OnDeleteListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnTextSubmitListener;
+import com.zsorg.neteasecloudmusic.adapters.PlaylistAdapter;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ConfigModel;
 import com.zsorg.neteasecloudmusic.models.PlaylistModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
-import com.zsorg.neteasecloudmusic.models.db.DiskMusicDao;
 
 import java.util.List;
 

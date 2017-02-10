@@ -1,8 +1,11 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.zsorg.neteasecloudmusic.fragments.MusicFragment;
+import com.zsorg.neteasecloudmusic.fragments.PlayListFragment;
 
 import java.util.ArrayList;
 

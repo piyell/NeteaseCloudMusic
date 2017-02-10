@@ -26,16 +26,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.zsorg.neteasecloudmusic.LineItemDecorator;
-import com.zsorg.neteasecloudmusic.MainAdapter;
+import com.zsorg.neteasecloudmusic.adapters.MainAdapter;
 import com.zsorg.neteasecloudmusic.MusicPlayerService;
-import com.zsorg.neteasecloudmusic.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.presenters.MusicSearchPresenter;
 import com.zsorg.neteasecloudmusic.presenters.PlayerPresenter;
-import com.zsorg.neteasecloudmusic.presenters.SearchAdapter;
+import com.zsorg.neteasecloudmusic.adapters.SearchAdapter;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
 import com.zsorg.neteasecloudmusic.views.ISearchView;
 import com.zsorg.neteasecloudmusic.widgets.PlaylistDialog;
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity
     public void onConfigClick(){
         Intent intent = new Intent(this, ConfigActivity.class);
         startActivity(intent);
-
+        mDrawer.closeDrawers();
     }
 
     @OnClick(R.id.tv_quit)

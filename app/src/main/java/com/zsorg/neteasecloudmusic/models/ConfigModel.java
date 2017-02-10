@@ -8,10 +8,9 @@ import android.support.annotation.StringRes;
 import android.util.Log;
 
 import com.zsorg.neteasecloudmusic.CONST;
-import com.zsorg.neteasecloudmusic.ConfigCallback;
+import com.zsorg.neteasecloudmusic.callbacks.ConfigCallback;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.beans.ConfigBean;
-import com.zsorg.neteasecloudmusic.models.beans.MenuBean;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,12 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zsorg.neteasecloudmusic.LineItemDecorator;
+import com.zsorg.neteasecloudmusic.MusicPlayerService;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.activities.MusicListActivity;
+import com.zsorg.neteasecloudmusic.adapters.BaseAdapter;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
-import com.zsorg.neteasecloudmusic.presenters.MusicAlbumAdapter;
-import com.zsorg.neteasecloudmusic.presenters.MusicFolderAdapter;
-import com.zsorg.neteasecloudmusic.presenters.MusicSingerAdapter;
-import com.zsorg.neteasecloudmusic.presenters.MusicSingleAdapter;
+import com.zsorg.neteasecloudmusic.adapters.MusicAlbumAdapter;
+import com.zsorg.neteasecloudmusic.adapters.MusicFolderAdapter;
+import com.zsorg.neteasecloudmusic.adapters.MusicSingerAdapter;
+import com.zsorg.neteasecloudmusic.adapters.MusicSingleAdapter;
 import com.zsorg.neteasecloudmusic.presenters.SubMusicPresenter;
 import com.zsorg.neteasecloudmusic.views.ISubMusicView;
 

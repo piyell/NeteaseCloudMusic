@@ -6,19 +6,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
-import android.support.graphics.drawable.VectorDrawableCompat;
-import android.support.v4.graphics.BitmapCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zsorg.neteasecloudmusic.BaseAdapter;
+import com.zsorg.neteasecloudmusic.adapters.BaseAdapter;
 import com.zsorg.neteasecloudmusic.BaseHolder;
-import com.zsorg.neteasecloudmusic.OnItemCLickListener;
-import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnMenuItemClickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.beans.MenuBean;
 

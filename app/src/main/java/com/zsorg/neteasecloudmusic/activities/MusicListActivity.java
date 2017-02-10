@@ -16,12 +16,12 @@ import android.widget.TextView;
 
 import com.zsorg.neteasecloudmusic.LineItemDecorator;
 import com.zsorg.neteasecloudmusic.MusicPlayerService;
-import com.zsorg.neteasecloudmusic.OnItemCLickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.ImageCacheManager2;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
-import com.zsorg.neteasecloudmusic.presenters.MusicSingleAdapter;
+import com.zsorg.neteasecloudmusic.adapters.MusicSingleAdapter;
 import com.zsorg.neteasecloudmusic.presenters.PlayerPresenter;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
 import com.zsorg.neteasecloudmusic.widgets.PlaylistDialog;

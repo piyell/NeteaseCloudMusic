@@ -1,15 +1,12 @@
 package com.zsorg.neteasecloudmusic.presenters;
 
-import android.content.Intent;
-
 import com.zsorg.neteasecloudmusic.CONST;
 import com.zsorg.neteasecloudmusic.MusicPlayerService;
-import com.zsorg.neteasecloudmusic.OnTrackListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnTrackListener;
 import com.zsorg.neteasecloudmusic.models.PlayerManager;
 import com.zsorg.neteasecloudmusic.models.PlaylistModel;
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 import com.zsorg.neteasecloudmusic.views.IPlayerView;
-import com.zsorg.neteasecloudmusic.views.IPlaylistView;
 
 import java.util.ArrayList;
 import java.util.List;

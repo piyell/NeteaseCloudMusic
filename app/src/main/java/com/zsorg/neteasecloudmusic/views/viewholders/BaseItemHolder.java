@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import com.zsorg.neteasecloudmusic.BaseHolder;
-import com.zsorg.neteasecloudmusic.OnMenuItemClickListener;
+import com.zsorg.neteasecloudmusic.callbacks.OnMenuItemClickListener;
 import com.zsorg.neteasecloudmusic.R;
 import com.zsorg.neteasecloudmusic.models.beans.MenuBean;
 import com.zsorg.neteasecloudmusic.widgets.MenuDialog;

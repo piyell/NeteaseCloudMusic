@@ -1,6 +1,5 @@
 package com.zsorg.neteasecloudmusic.models;
 
-import com.zsorg.neteasecloudmusic.OnItemCLickListener;
 import com.zsorg.neteasecloudmusic.models.beans.MenuBean;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.zsorg.neteasecloudmusic;
+package com.zsorg.neteasecloudmusic.callbacks;
 
 import com.zsorg.neteasecloudmusic.models.beans.MusicBean;
 

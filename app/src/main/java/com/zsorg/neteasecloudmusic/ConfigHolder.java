@@ -5,6 +5,8 @@ import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.TextView;
 
+import com.zsorg.neteasecloudmusic.callbacks.OnItemCLickListener;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
